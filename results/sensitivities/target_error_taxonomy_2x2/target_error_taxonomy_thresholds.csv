@@ -1,0 +1,13 @@
+cell,iou_threshold,same_class_localized,wrong_class_localized,any_class_localized,no_localized_prediction
+natural_640,0.1,0,0,0,64
+natural_640,0.3,0,0,0,64
+natural_640,0.5,0,0,0,64
+repeat4_640,0.1,0,0,0,64
+repeat4_640,0.3,0,0,0,64
+repeat4_640,0.5,0,0,0,64
+natural_1280,0.1,0,5,5,59
+natural_1280,0.3,0,3,3,61
+natural_1280,0.5,0,0,0,64
+repeat4_1280,0.1,0,12,12,52
+repeat4_1280,0.3,0,0,0,64
+repeat4_1280,0.5,0,0,0,64

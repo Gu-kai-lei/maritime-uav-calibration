@@ -1,0 +1,54 @@
+project:
+  name: maritime-uav-calibration
+  seed: 20260803
+
+dataset:
+  name: SeaDronesSee Object Detection v2
+  task: multiclass-object-detection-v2
+  annotations_format: coco
+  final_split: official-validation
+  calibration_iou: 0.50
+  metadata_fields:
+    altitude: [meta.altitude, "meta.height_above_takeoff(meter)", altitude]
+    gimbal_pitch: [meta.gimbal_pitch, "meta.gimbal_pitch(degrees)", gimbal_pitch]
+  group_fields: [video_id, source.video, source.drone, source.folder_name]
+  training_partition_fractions:
+    detector_train: 0.70
+    detector_dev: 0.10
+    calibration_fit: 0.10
+    policy_tune: 0.10
+
+detector:
+  framework: ultralytics
+  model: yolov8n.pt
+  image_size: 640
+  epochs: 100
+  batch: auto
+  patience: 20
+  device: 0
+  workers: 4
+  deterministic: true
+  prediction_confidence_floor: 0.001
+  nms_iou: 0.70
+
+calibration:
+  variants:
+    - raw
+    - global_logistic
+    - class_logistic
+    - altitude
+    - altitude_gimbal
+    - full_metadata
+  features:
+    global_logistic: [score_logit]
+    class_logistic: [score_logit, category_id]
+    altitude: [score_logit, category_id, log_altitude]
+    altitude_gimbal: [score_logit, category_id, log_altitude, gimbal_sin, gimbal_cos]
+    full_metadata:
+      [score_logit, category_id, log_altitude, gimbal_sin, gimbal_cos, log_relative_area]
+
+evaluation:
+  ece_bins: 15
+  primary_operating_iou: 0.50
+  fixed_fp_per_image: [0.1, 0.25, 0.5, 1.0]
+  altitude_bins_m: [0, 25, 50, 100, 150, 1000000]

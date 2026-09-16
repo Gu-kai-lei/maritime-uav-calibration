@@ -1,0 +1,57 @@
+experiment:
+  name: life-saving-appliance-failure-audit
+  registered_on: 2026-08-04
+  completed_on: 2026-08-04
+  status: completed
+  target_category: life_saving_appliances
+  purpose: explain the persistent zero-AP rare-class failure before any full 1280 training
+
+frozen_inputs:
+  checkpoint_sha256: cccc90e9303a37ddc8131288f59b68547c0e05c696d9472fee4f650d16ae5321
+  detector_dev_annotations: artifacts/partitions/seed20260803/instances_detector_dev.json
+  detector_dev_annotations_sha256: 70748e58e03e153513a38376b2ba928727cff13c0da302fb46b7c1a4e430e89e
+  predictions_640: artifacts/sensitivities/resolution_inference/predictions/detector_dev_640.json
+  predictions_640_sha256: 1f9830d1b882819c9de81d9ada6bbecdb6e54156d5df9075350e277ee5befded
+  predictions_1280: artifacts/sensitivities/resolution_inference/predictions/detector_dev_1280.json
+  predictions_1280_sha256: 3817e31fd983df0535398683c7537e473b003e781f0b29ee25b02957bce186b5
+  calibration_fit_predictions: artifacts/sensitivities/stable_640_noamp/predictions/calibration_fit.json
+  calibration_fit_predictions_sha256: 870a077725a3e1a0af39798d9bfc7a29c52d71dc3ed13f8a97994f9554b3063a
+  policy_tune_predictions: artifacts/sensitivities/stable_640_noamp/predictions/policy_tune.json
+  policy_tune_predictions_sha256: f73284393538392c38f2d0783ccf9ee8cd63fce65d5f7e6f52168900908375d1
+  confidence_floor: 0.001
+  localization_iou: 0.50
+  official_validation_used: false
+
+questions:
+  - how many target instances, images, and source groups exist in each frozen role
+  - whether target relative-area distributions shift between detector-train and detector-dev
+  - whether detector-dev targets are localized under the wrong class or not localized at all
+  - whether 1280 changes the target failure mode despite zero same-class AP
+  - whether the same 640 checkpoint localizes the class on calibration-fit and policy-tune
+  - whether pixel-level crop and context statistics expose a descriptive appearance shift
+
+claim_boundary:
+  - detector-dev target annotations come from one source video, so no source-generalization claim
+  - low-threshold proposal failures do not prove annotation error
+  - audit findings guide a later hypothesis; they do not authorize official-validation tuning
+
+outputs:
+  public: results/sensitivities/rare_class_audit
+  per_annotation_artifact: artifacts/sensitivities/rare_class_audit/per_annotation_failures.csv
+  visual_feature_artifact: artifacts/sensitivities/rare_class_audit/visual_features_per_annotation.csv
+  local_crop_montage: artifacts/sensitivities/rare_class_audit/all_roles_crop_montage.png
+  report: docs/RARE_CLASS_AUDIT.md
+
+decision:
+  inference_resolution_is_sufficient_explanation: false
+  same_class_localization_failure: confirmed at both 640 and 1280
+  wrong_class_localization_failure: not observed at IoU 0.50
+  simple_relative_size_shift: not supported by role medians
+  source_concentration: severe on detector-dev, which contains one target source group
+  cross_role_failure: 2 of 501 non-training target annotations matched at IoU 0.50
+  detector_train_class_rank_by_support: rarest active class
+  target_effective_median_size_at_640: 5.5 x 4.83 pixels
+  target_effective_median_size_at_1280: 11.0 x 9.67 pixels
+  descriptive_appearance_shift: detector-dev central target crops are much brighter and less saturated
+  next_control: freeze a resolution-by-rare-positive-sampling experiment before launching training
+  full_1280_training_for_rare_class: defer until the controlled factorial comparison is registered

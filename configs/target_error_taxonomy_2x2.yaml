@@ -1,0 +1,65 @@
+analysis:
+  name: detector-dev-target-error-taxonomy-2x2
+  completed_on: 2026-08-05
+  status: completed
+  scope: post-freeze diagnostic
+  target_category: life_saving_appliances
+
+frozen_inputs:
+  annotations: artifacts/partitions/seed20260803/instances_detector_dev.json
+  annotations_sha256: 70748e58e03e153513a38376b2ba928727cff13c0da302fb46b7c1a4e430e89e
+  confidence_floor: 0.001
+  iou_thresholds: [0.10, 0.30, 0.50]
+  official_validation_used: false
+  predictions:
+    natural_640: artifacts/sensitivities/resolution_inference/predictions/detector_dev_640.json
+    repeat4_640: artifacts/sensitivities/rare_class_factorial/predictions/detector_dev.json
+    natural_1280: artifacts/sensitivities/rare_class_factorial/predictions/natural_1280_detector_dev.json
+    repeat4_1280: artifacts/sensitivities/rare_class_factorial/predictions/repeat4_1280_detector_dev.json
+
+results:
+  target_ground_truth: 64
+  same_class_maximum_best_iou:
+    natural_640: 0.0
+    repeat4_640: 0.0
+    natural_1280: 0.0
+    repeat4_1280: 0.0
+  any_class_localized_iou_0.10:
+    natural_640: 0
+    repeat4_640: 0
+    natural_1280: 5
+    repeat4_1280: 12
+  any_class_localized_iou_0.30:
+    natural_640: 0
+    repeat4_640: 0
+    natural_1280: 3
+    repeat4_1280: 0
+  any_class_localized_iou_0.50:
+    natural_640: 0
+    repeat4_640: 0
+    natural_1280: 0
+    repeat4_1280: 0
+  best_overlap_categories:
+    natural_640: {boat: 60, swimmer: 4}
+    repeat4_640: {boat: 57, swimmer: 7}
+    natural_1280: {boat: 59, swimmer: 5}
+    repeat4_1280: {boat: 55, swimmer: 9}
+  interpretation: higher resolution creates limited low-IoU overlap from boat or swimmer boxes, but neither resolution nor repeated whole-frame exposure teaches target-class localization
+
+decision:
+  more_whole_frame_repeat_exposure: rejected
+  simple_threshold_lowering: rejected
+  resolution_only: insufficient
+  next_candidate: detector-train-only object-centric crop or tiling control with context stratification
+  next_candidate_status: preregistration_required_before_training
+
+claim_boundary:
+  - low-IoU boat overlap may reflect a containing boat box rather than true target misclassification
+  - detector-dev contains one target source group, so this is not a source-generalization estimate
+  - this analysis cannot select checkpoints, thresholds, or a future intervention
+  - official validation remains untouched
+
+outputs:
+  report: docs/TARGET_ERROR_TAXONOMY_2X2.md
+  public_results: results/sensitivities/target_error_taxonomy_2x2
+  script: scripts/analyze_target_error_taxonomy_2x2.py

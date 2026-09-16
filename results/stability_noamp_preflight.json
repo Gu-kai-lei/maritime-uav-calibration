@@ -1,0 +1,21 @@
+{
+  "purpose": "CUDA-memory and finite-loss gate only",
+  "performance_claims_allowed": false,
+  "run_id": "sds_v2_yolov8n_640_seed20260803_noamp_preflight",
+  "training_fraction": 0.02,
+  "epochs": 1,
+  "images_used_for_training": 125,
+  "batch": 16,
+  "amp": false,
+  "peak_gpu_memory_gib_reported": 3.92,
+  "train_losses": {
+    "box": 2.32279,
+    "class": 4.68416,
+    "dfl": 0.97631,
+    "all_finite": true
+  },
+  "stderr_bytes": 0,
+  "cuda_out_of_memory": false,
+  "passed": true,
+  "note": "The detector-dev metric from this partial-data run is intentionally excluded from research results."
+}

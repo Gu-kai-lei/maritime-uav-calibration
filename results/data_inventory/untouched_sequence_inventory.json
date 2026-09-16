@@ -1,0 +1,506 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-16T09:52:38.779171+00:00",
+  "scope": "read-only local source coverage and integrity inventory",
+  "source_group_fields": [
+    "video_id",
+    "source.video",
+    "source.drone",
+    "source.folder_name"
+  ],
+  "official_train_annotations": "D:\\dataset\\SeaDronesSee_ODv2\\compressed\\annotations\\instances_train.json",
+  "official_train_annotations_sha256": "5706b042f6b6c50267ed06076b8c27594ff4da76569edbd99ed53ed8bfa1db95",
+  "role_annotation_sha256": {
+    "detector_train": "9e10932e726d718d53d7923e7c20169b7bc947437980b9d23b8013bc15338490",
+    "detector_dev": "70748e58e03e153513a38376b2ba928727cff13c0da302fb46b7c1a4e430e89e",
+    "calibration_fit": "dca4e55dd55da8910263d7f10572ccc3ade2252653010879f2bc023c5a1c5e8f",
+    "policy_tune": "4c4048f10d99b1e5228fc5a165114128f0578c5ed73f488f95006d1c940309d0"
+  },
+  "coverage": {
+    "official_train_images": 8930,
+    "official_train_source_groups": 38,
+    "roles": {
+      "detector_train": {
+        "images": 6251,
+        "source_groups": 20,
+        "groups": [
+          {
+            "source_group": "source.drone:trinity",
+            "images": 1554
+          },
+          {
+            "source_group": "source.video:DJI_0001.mov",
+            "images": 15
+          },
+          {
+            "source_group": "source.video:DJI_0003_d3.mov",
+            "images": 1
+          },
+          {
+            "source_group": "source.video:DJI_0010_d3.mov",
+            "images": 113
+          },
+          {
+            "source_group": "source.video:DJI_0011_d3.mov",
+            "images": 338
+          },
+          {
+            "source_group": "source.video:DJI_0039.MP4",
+            "images": 40
+          },
+          {
+            "source_group": "source.video:DJI_0057.MP4",
+            "images": 19
+          },
+          {
+            "source_group": "source.video:DJI_0064.MP4",
+            "images": 16
+          },
+          {
+            "source_group": "source.video:DJI_0069.MP4",
+            "images": 208
+          },
+          {
+            "source_group": "source.video:NorthSea_Fri_DJI_0113.MP4",
+            "images": 357
+          },
+          {
+            "source_group": "source.video:NorthSea_Fri_DJI_0114.MP4",
+            "images": 361
+          },
+          {
+            "source_group": "source.video:NorthSea_Fri_DJI_0116.MP4",
+            "images": 361
+          },
+          {
+            "source_group": "source.video:NorthSea_Fri_DJI_0117.MP4",
+            "images": 133
+          },
+          {
+            "source_group": "source.video:NorthSea_Sat_DJI_0122.MP4",
+            "images": 285
+          },
+          {
+            "source_group": "source.video:NorthSea_Sat_DJI_0126.MP4",
+            "images": 297
+          },
+          {
+            "source_group": "source.video:NorthSea_Sat_Z30_DJI003.MP4",
+            "images": 1087
+          },
+          {
+            "source_group": "source.video:NorthSea_Sat_Z30_DJI005.MP4",
+            "images": 489
+          },
+          {
+            "source_group": "source.video:NorthSea_Thu_DJI_0106.MP4",
+            "images": 67
+          },
+          {
+            "source_group": "source.video:NorthSea_Thu_DJI_0108.MP4",
+            "images": 247
+          },
+          {
+            "source_group": "source.video:NorthSea_Thu_DJI_0109.MP4",
+            "images": 263
+          }
+        ]
+      },
+      "detector_dev": {
+        "images": 893,
+        "source_groups": 7,
+        "groups": [
+          {
+            "source_group": "source.video:DJI_0003.mov",
+            "images": 51
+          },
+          {
+            "source_group": "source.video:DJI_0006_d3.mov",
+            "images": 80
+          },
+          {
+            "source_group": "source.video:DJI_0041.MP4",
+            "images": 40
+          },
+          {
+            "source_group": "source.video:DJI_0059.MP4",
+            "images": 40
+          },
+          {
+            "source_group": "source.video:DJI_0062.MP4",
+            "images": 67
+          },
+          {
+            "source_group": "source.video:NorthSea_Fri_DJI_0115.MP4",
+            "images": 290
+          },
+          {
+            "source_group": "source.video:NorthSea_Thu_DJI_0107.MP4",
+            "images": 325
+          }
+        ]
+      },
+      "calibration_fit": {
+        "images": 893,
+        "source_groups": 6,
+        "groups": [
+          {
+            "source_group": "source.video:DJI_0001_d3.mov",
+            "images": 80
+          },
+          {
+            "source_group": "source.video:DJI_0038.MP4",
+            "images": 34
+          },
+          {
+            "source_group": "source.video:DJI_0063.MP4",
+            "images": 123
+          },
+          {
+            "source_group": "source.video:DJI_0065.MP4",
+            "images": 40
+          },
+          {
+            "source_group": "source.video:NorthSea_Fri_DJI_0110.MP4",
+            "images": 255
+          },
+          {
+            "source_group": "source.video:NorthSea_Sat_DJI_0129.MP4",
+            "images": 361
+          }
+        ]
+      },
+      "policy_tune": {
+        "images": 893,
+        "source_groups": 5,
+        "groups": [
+          {
+            "source_group": "source.video:DJI_0032.MP4",
+            "images": 76
+          },
+          {
+            "source_group": "source.video:DJI_0050.MP4",
+            "images": 67
+          },
+          {
+            "source_group": "source.video:DJI_0055.MP4",
+            "images": 40
+          },
+          {
+            "source_group": "source.video:NorthSea_Fri_DJI_0112.MP4",
+            "images": 353
+          },
+          {
+            "source_group": "source.video:NorthSea_Sat_DJI_0131.MP4",
+            "images": 357
+          }
+        ]
+      }
+    },
+    "pairwise_accumulated_overlap_checks": [
+      {
+        "role": "detector_train",
+        "image_id_overlap_with_prior_roles": 0,
+        "file_name_overlap_with_prior_roles": 0,
+        "source_group_overlap_with_prior_roles": 0
+      },
+      {
+        "role": "detector_dev",
+        "image_id_overlap_with_prior_roles": 0,
+        "file_name_overlap_with_prior_roles": 0,
+        "source_group_overlap_with_prior_roles": 0
+      },
+      {
+        "role": "calibration_fit",
+        "image_id_overlap_with_prior_roles": 0,
+        "file_name_overlap_with_prior_roles": 0,
+        "source_group_overlap_with_prior_roles": 0
+      },
+      {
+        "role": "policy_tune",
+        "image_id_overlap_with_prior_roles": 0,
+        "file_name_overlap_with_prior_roles": 0,
+        "source_group_overlap_with_prior_roles": 0
+      }
+    ],
+    "role_union_images": 8930,
+    "role_union_file_names": 8930,
+    "role_union_source_groups": 38,
+    "unused_image_ids": [],
+    "unused_file_names": [],
+    "unused_source_groups": [],
+    "complete_image_coverage": true,
+    "complete_file_name_coverage": true,
+    "complete_source_group_coverage": true
+  },
+  "train_image_integrity": {
+    "image_root": "D:\\dataset\\SeaDronesSee_ODv2\\compressed\\images\\train",
+    "annotation_images": 8930,
+    "local_files": 8930,
+    "missing_annotation_images": [],
+    "unexpected_local_files": [],
+    "download_manifest": "D:\\dataset\\SeaDronesSee_ODv2\\manifests\\train_webdav_manifest.json",
+    "download_manifest_sha256": "c835b265e6c74c9b2a05157fb1b8070d3f3729cd5fb27bfc190a6c58df58ddae",
+    "manifest_missing_annotation_images": [],
+    "manifest_unexpected_files": [],
+    "size_mismatches": [],
+    "local_filename_size_inventory_sha256": "fd758c525fe5348ca01bc4032bd8aa54382a00fd3fe246dfbe890fc730eb025e",
+    "server_name_size_etag_inventory_sha256": "b82ecffda61a69fa1f8d79d7e7cf883c6038bc39060a50d8169b77ca30575a6b",
+    "content_sha256_per_image_performed": false,
+    "complete": true
+  },
+  "protected": {
+    "name": "official_validation",
+    "annotations": "D:\\dataset\\SeaDronesSee_ODv2\\compressed\\annotations\\instances_val.json",
+    "annotations_sha256": "9e965c832263e6b9b9dd299637833e5b93924ecf9a1780b16fbd7c53e4a63f5e",
+    "inventory": {
+      "images": 1547,
+      "source_groups": 33,
+      "overlap_with_official_train_source_groups": 33,
+      "novel_source_groups_relative_to_official_train": [],
+      "groups": [
+        {
+          "source_group": "source.drone:trinity",
+          "images": 259,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0001_d3.mov",
+          "images": 14,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0003.mov",
+          "images": 9,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0006_d3.mov",
+          "images": 14,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0011_d3.mov",
+          "images": 56,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0032.MP4",
+          "images": 60,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0038.MP4",
+          "images": 6,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0039.MP4",
+          "images": 7,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0041.MP4",
+          "images": 7,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0055.MP4",
+          "images": 7,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0057.MP4",
+          "images": 7,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0059.MP4",
+          "images": 7,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0063.MP4",
+          "images": 96,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0064.MP4",
+          "images": 3,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0065.MP4",
+          "images": 7,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:DJI_0069.MP4",
+          "images": 35,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Fri_DJI_0110.MP4",
+          "images": 42,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Fri_DJI_0112.MP4",
+          "images": 60,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Fri_DJI_0113.MP4",
+          "images": 60,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Fri_DJI_0114.MP4",
+          "images": 60,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Fri_DJI_0115.MP4",
+          "images": 49,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Fri_DJI_0116.MP4",
+          "images": 60,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Fri_DJI_0117.MP4",
+          "images": 5,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Sat_DJI_0122.MP4",
+          "images": 51,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Sat_DJI_0126.MP4",
+          "images": 50,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Sat_DJI_0129.MP4",
+          "images": 60,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Sat_DJI_0131.MP4",
+          "images": 59,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Sat_Z30_DJI003.MP4",
+          "images": 181,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Sat_Z30_DJI005.MP4",
+          "images": 77,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Thu_DJI_0106.MP4",
+          "images": 12,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Thu_DJI_0107.MP4",
+          "images": 38,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Thu_DJI_0108.MP4",
+          "images": 45,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        },
+        {
+          "source_group": "source.video:NorthSea_Thu_DJI_0109.MP4",
+          "images": 44,
+          "overlaps_official_train": true,
+          "eligible_as_development_holdout": false
+        }
+      ],
+      "labels_or_model_metrics_summarized": false,
+      "policy": "protected official validation; never a development or selection role"
+    },
+    "image_integrity": {
+      "image_root": "D:\\dataset\\SeaDronesSee_ODv2\\compressed\\images\\val",
+      "annotation_images": 1547,
+      "local_files": 1547,
+      "missing_annotation_images": [],
+      "unexpected_local_files": [],
+      "download_manifest": "D:\\dataset\\SeaDronesSee_ODv2\\manifests\\val_webdav_manifest.json",
+      "download_manifest_sha256": "9bc656bdace7b0e5c15048ec83b17e071de82310dc285be923ed327ca0dfaded",
+      "manifest_missing_annotation_images": [],
+      "manifest_unexpected_files": [],
+      "size_mismatches": [],
+      "local_filename_size_inventory_sha256": "9c5ead91fabc6bdfe9e16b72a5a025f672048a3188b3a2f8a7ca730e68f199c6",
+      "server_name_size_etag_inventory_sha256": "cdd560e5f616a4d8b310c43a079f34ced67e18969fdf83afbbf36b95f843aa82",
+      "content_sha256_per_image_performed": false,
+      "complete": true
+    }
+  },
+  "official_validation_metrics_or_labels_summarized": false,
+  "model_or_prediction_files_accessed": false,
+  "training_or_inference_performed": false,
+  "data_files_modified_or_copied": false,
+  "decision": {
+    "fresh_source_sequence_holdout_ready": false,
+    "eligible_local_untouched_source_groups": [],
+    "official_validation_eligible_for_development": false,
+    "status": "blocked_no_local_untouched_source_sequence",
+    "required_next_action": "Acquire or attach externally sourced, fully annotated maritime sequences whose source groups are absent from all existing roles."
+  },
+  "external_ingest_requirements": [
+    "complete source-video grouping metadata",
+    "image and annotation files with SHA-256 provenance",
+    "life_saving_appliances positive examples",
+    "real target-negative maritime scenes",
+    "zero source-group overlap with all existing development roles",
+    "a frozen manifest before any proposal-rule evaluation"
+  ],
+  "outputs": {
+    "result": ".\\results\\data_inventory\\untouched_sequence_inventory.json",
+    "role_source_coverage": ".\\results\\data_inventory\\role_source_coverage.csv",
+    "protected_official_val_sources": ".\\results\\data_inventory\\protected_official_val_sources.csv",
+    "untouched_candidate_sources": ".\\results\\data_inventory\\untouched_candidate_sources.csv"
+  }
+}

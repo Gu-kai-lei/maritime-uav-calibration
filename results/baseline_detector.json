@@ -1,0 +1,85 @@
+{
+  "run_id": "sds_v2_yolov8n_640_seed20260803",
+  "detector": "YOLOv8n",
+  "initialization": "public COCO weights",
+  "initialization_sha256": "f59b3d833e2ff32e194b5bb8e08d211dc7c5bdf144b90d2c8412c47ccfc83b36",
+  "best_checkpoint_sha256": "7cd6d3a42363dc52f1fbda3abca791a01b7fa2e5c2b878aaab9f0b55cb7e7fc9",
+  "data_yaml_sha256": "115e6b564c6e78f1bed23a99aef11117d1135258c7a2cd9a3d5209dc99fc3133",
+  "image_size": 640,
+  "seed": 20260803,
+  "deterministic_requested": true,
+  "epochs_requested": 100,
+  "epochs_completed": 28,
+  "best_epoch": 8,
+  "early_stopping_patience": 20,
+  "requested_batch": "auto",
+  "effective_batch_size": 16,
+  "training_hours": 1.119,
+  "checkpoint_selection_split": "detector-dev",
+  "official_validation_used_for_checkpoint_selection": false,
+  "best_epoch_metrics_from_results_csv": {
+    "precision": 0.77603,
+    "recall": 0.48379,
+    "map50": 0.48334,
+    "map50_95": 0.23812
+  },
+  "final_best_checkpoint_validation": {
+    "all": {
+      "images": 893,
+      "instances": 5437,
+      "precision": 0.774,
+      "recall": 0.486,
+      "map50": 0.483,
+      "map50_95": 0.238
+    },
+    "swimmer": {
+      "images": 726,
+      "instances": 3115,
+      "precision": 0.603,
+      "recall": 0.382,
+      "map50": 0.371,
+      "map50_95": 0.106
+    },
+    "boat": {
+      "images": 567,
+      "instances": 1533,
+      "precision": 0.859,
+      "recall": 0.799,
+      "map50": 0.832,
+      "map50_95": 0.515
+    },
+    "jetski": {
+      "images": 305,
+      "instances": 306,
+      "precision": 0.598,
+      "recall": 0.614,
+      "map50": 0.547,
+      "map50_95": 0.201
+    },
+    "life_saving_appliances": {
+      "images": 64,
+      "instances": 64,
+      "precision": 1.0,
+      "recall": 0.0,
+      "map50": 0.0,
+      "map50_95": 0.0
+    },
+    "buoy": {
+      "images": 328,
+      "instances": 419,
+      "precision": 0.81,
+      "recall": 0.632,
+      "map50": 0.666,
+      "map50_95": 0.37
+    }
+  },
+  "environment": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.6.0+cu124",
+    "ultralytics": "8.4.51",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU"
+  },
+  "training_stability_note": "Training metrics collapsed after epoch 8; early stopping preserved the epoch-8 checkpoint. This instability is disclosed and motivates a future detector sensitivity run."
+}

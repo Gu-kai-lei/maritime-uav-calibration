@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "recorded_on": "2026-08-04",
+  "experiment": "Stage B single-factor no-AMP stability control",
+  "attempt": "sds_v2_yolov8n_640_seed20260803_noamp",
+  "status": "execution_failure_before_first_epoch_result",
+  "frozen_parameters": {
+    "model": "yolov8n.pt",
+    "image_size": 640,
+    "batch": 16,
+    "seed": 20260803,
+    "workers": 4,
+    "amp": false,
+    "training_fraction": 1.0,
+    "checkpoint_selection_split": "detector-dev",
+    "official_validation_used_for_selection": false
+  },
+  "observations": {
+    "completed_training_batches": 1,
+    "epoch_results_rows": 0,
+    "results_csv_exists": false,
+    "run_manifest_exists": false,
+    "checkpoint_exists": false,
+    "reported_gpu_memory_gib": 3.96,
+    "last_reported_losses": {
+      "box": 2.857,
+      "classification": 5.533,
+      "dfl": 1.149
+    },
+    "stdout_bytes": 41414,
+    "stderr_bytes": 1399,
+    "last_log_write_utc": "2026-08-04T07:36:19.0320185Z"
+  },
+  "error": {
+    "type": "RuntimeError",
+    "message": "cuDNN error: CUDNN_STATUS_BAD_PARAM_STREAM_MISMATCH",
+    "phase": "backward"
+  },
+  "interpretation": "This is an execution failure, not a detector result. It neither supports nor refutes the no-AMP stability hypothesis.",
+  "next_gate": "Run one exact launch reproduction in a new directory. If the same error recurs, do not perform another identical restart."
+}

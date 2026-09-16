@@ -1,0 +1,66 @@
+{
+  "comparison": "frozen AMP primary versus single-factor no-AMP stability control",
+  "failed_run": "sds_v2_yolov8n_640_seed20260803",
+  "control_run": "sds_v2_yolov8n_640_seed20260803_noamp_launch_replay",
+  "frozen_inputs": {
+    "initialization_sha256_equal": true,
+    "data_yaml_sha256_equal": true,
+    "image_size_equal": true,
+    "seed_equal": true,
+    "effective_batch_failed": 16,
+    "effective_batch_control": 16,
+    "amp_failed": true,
+    "amp_control": false,
+    "official_validation_used_for_selection": false
+  },
+  "failed": {
+    "epochs_completed": 28,
+    "collapse_epoch": 9,
+    "best": {
+      "epoch": 8,
+      "precision": 0.77603,
+      "recall": 0.48379,
+      "map50": 0.48334,
+      "map50_95": 0.23812
+    },
+    "stderr_bytes": 0
+  },
+  "control": {
+    "epochs_completed": 76,
+    "collapse_epoch": null,
+    "best": {
+      "epoch": 56,
+      "precision": 0.83559,
+      "recall": 0.52136,
+      "map50": 0.54063,
+      "map50_95": 0.27992
+    },
+    "stderr_bytes": 0,
+    "best_checkpoint": {
+      "file_sha256": "cccc90e9303a37ddc8131288f59b68547c0e05c696d9472fee4f650d16ae5321",
+      "model_state_sha256": "3a8b3d2f3e24fd1427eb224bb68b61ff79720f8bf805256f739486a8dea35b77",
+      "floating_values": 3022223,
+      "nonfinite_values": 0,
+      "maximum_absolute_weight": 31.421875,
+      "l2_weight_norm": 224.6615758550462
+    },
+    "final_checkpoint": {
+      "file_sha256": "98ba9d0594b3e95e92763bd74d0f530afa4f1f1ae1f7a054dd9286592663a13b",
+      "model_state_sha256": "6dfb79a30678a6bdbeda63489edbb01ed896c22ba43835a71da974df016c5dca",
+      "floating_values": 3022223,
+      "nonfinite_values": 0,
+      "maximum_absolute_weight": 33.78125,
+      "l2_weight_norm": 225.37282496489556
+    }
+  },
+  "stability_gate": {
+    "passed": true,
+    "checks": {
+      "no_metric_collapse": true,
+      "best_checkpoint_finite": true,
+      "final_checkpoint_finite": true,
+      "stderr_empty": true
+    }
+  },
+  "interpretation": "Passing this one-run control supports an AMP-path explanation but does not establish a general framework bug; failing it rules out AMP as a sufficient single-factor fix."
+}

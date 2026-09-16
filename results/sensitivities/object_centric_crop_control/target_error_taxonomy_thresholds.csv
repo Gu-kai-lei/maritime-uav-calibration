@@ -1,0 +1,7 @@
+cell,iou_threshold,same_class_localized,wrong_class_localized,any_class_localized,no_localized_prediction
+repeat4_1280,0.1,0,12,12,52
+repeat4_1280,0.3,0,0,0,64
+repeat4_1280,0.5,0,0,0,64
+crop4_1280,0.1,0,1,1,63
+crop4_1280,0.3,0,0,0,64
+crop4_1280,0.5,0,0,0,64

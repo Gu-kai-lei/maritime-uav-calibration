@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "status": "ready_for_official_video_archive_acquisition",
+  "dataset": {
+    "name": "MOBDrone",
+    "version": "1.0.0",
+    "doi": "10.5281/zenodo.5996890",
+    "annotations": ".\\artifacts\\external_holdout\\mobdrone\\source\\annotations_5_custom_classes.json",
+    "annotations_bytes": 60485062,
+    "annotations_md5": "11f578ff9ede473005d72ccccd0ae82b",
+    "annotations_sha256": "34d4861b19420096b1396e5805d5988ac2a08cd4ff76ea485b3d889ea12d4f89",
+    "categories": {
+      "person": 1,
+      "boat": 2,
+      "surfboard": 3,
+      "wood": 4,
+      "life_buoy": 5
+    },
+    "images": 126170,
+    "annotations_count": 181689
+  },
+  "coco_validation": {
+    "unique_image_ids": true,
+    "unique_file_names": true,
+    "unique_category_ids": true,
+    "missing_annotation_image_references": 0,
+    "missing_annotation_category_references": 0,
+    "invalid_bounding_boxes": 0
+  },
+  "official_recommended_test": {
+    "prefix": "DJI_0804",
+    "images": 37604,
+    "source_groups": 26,
+    "target_category": "life_buoy",
+    "target_annotations": 10401,
+    "target_positive_images": 10386,
+    "target_positive_source_groups": 16
+  },
+  "fixed_rate_selection": {
+    "stride_frames": 30,
+    "images": 1264,
+    "source_groups": 26,
+    "target_annotations": 350,
+    "target_positive_images": 349,
+    "target_negative_images": 915,
+    "target_positive_source_groups": 16,
+    "target_annotations_by_source": {
+      "DJI_0804_0001_30m_1": 10,
+      "DJI_0804_0001_30m_2": 7,
+      "DJI_0804_0009_40m": 25,
+      "DJI_0804_0010_60m": 36,
+      "DJI_0804_0011_30m_1": 29,
+      "DJI_0804_0011_30m_2": 16,
+      "DJI_0804_0012_50m_1": 7,
+      "DJI_0804_0012_50m_3": 26,
+      "DJI_0804_0013_40m": 21,
+      "DJI_0804_0014_50m_1": 16,
+      "DJI_0804_0014_50m_2": 29,
+      "DJI_0804_0014_50m_3": 5,
+      "DJI_0804_0015_30m": 44,
+      "DJI_0804_0016_20m": 31,
+      "DJI_0804_0017_40m": 10,
+      "DJI_0804_0018_40m": 38
+    },
+    "required_video_files": [
+      "DJI_0804_0001_30m_1.MP4",
+      "DJI_0804_0001_30m_2.MP4",
+      "DJI_0804_0001_30m_3.MP4",
+      "DJI_0804_0002_30m_1.MP4",
+      "DJI_0804_0002_30m_2.MP4",
+      "DJI_0804_0003_10m.MP4",
+      "DJI_0804_0004_20m.MP4",
+      "DJI_0804_0005_30m.MP4",
+      "DJI_0804_0006_40m.MP4",
+      "DJI_0804_0007_50m.MP4",
+      "DJI_0804_0008_20m.MP4",
+      "DJI_0804_0009_40m.MP4",
+      "DJI_0804_0010_60m.MP4",
+      "DJI_0804_0011_30m_1.MP4",
+      "DJI_0804_0011_30m_2.MP4",
+      "DJI_0804_0012_50m_1.MP4",
+      "DJI_0804_0012_50m_2.MP4",
+      "DJI_0804_0012_50m_3.MP4",
+      "DJI_0804_0013_40m.MP4",
+      "DJI_0804_0014_50m_1.MP4",
+      "DJI_0804_0014_50m_2.MP4",
+      "DJI_0804_0014_50m_3.MP4",
+      "DJI_0804_0015_30m.MP4",
+      "DJI_0804_0016_20m.MP4",
+      "DJI_0804_0017_40m.MP4",
+      "DJI_0804_0018_40m.MP4"
+    ]
+  },
+  "source_overlap": {
+    "existing_inventory": ".\\results\\data_inventory\\untouched_sequence_inventory.json",
+    "normalized_overlap_count": 0,
+    "overlap": []
+  },
+  "frame_pixels_downloaded_or_extracted": false,
+  "model_or_prediction_files_accessed": false,
+  "training_or_inference_performed": false,
+  "ready_for_video_acquisition": true
+}

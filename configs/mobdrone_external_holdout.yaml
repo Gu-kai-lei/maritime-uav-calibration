@@ -1,0 +1,188 @@
+analysis:
+  name: mobdrone-external-source-sequence-holdout
+  registered_on: 2026-08-16
+  status: completed_target_only_external_transfer_no_configuration_selected
+  scope: external target-class proposal transfer; no training and no configuration selection
+  question: test whether the frozen SeaDronesSee Crop4 proposal path transfers to independent MOBDrone source videos
+
+external_dataset:
+  name: MOBDrone
+  version: 1.0.0
+  doi: 10.5281/zenodo.5996890
+  official_page: https://aimh.isti.cnr.it/dataset/mobdrone/
+  record: https://zenodo.org/records/5996890
+  license_label_from_official_page: Creative Commons Attribution
+  provenance_boundary: external dataset identity; no SeaDronesSee source is reused
+  files:
+    annotations:
+      name: annotations_5_custom_classes.json
+      expected_zenodo_md5: 11f578ff9ede473005d72ccccd0ae82b
+      download_url: https://zenodo.org/records/5996890/files/annotations_5_custom_classes.json?download=1
+    videos:
+      name: MOBDrone_videos.zip
+      expected_zenodo_md5: 250c19fdd6fb0b5aa5fa43e5ad140306
+      download_url: https://zenodo.org/records/5996890/files/MOBDrone_videos.zip?download=1
+    excluded_bulk_images:
+      name: images.zip
+      reason: 243 GB package is unnecessary if annotated frames can be deterministically reconstructed and geometrically verified from the 5.5 GB official video archive
+    video_acquisition:
+      mode: HTTP byte ranges for the 26 preregistered DJI_0804 ZIP entries
+      reason: avoid downloading the 40 non-evaluation videos in the 5.5 GB archive
+      required_checks: parse the ZIP64 central directory from the official URL, verify each entry CRC32 and uncompressed byte count, and record SHA-256 for every decoded video
+
+frozen_role:
+  official_recommended_test_prefix: DJI_0804
+  source_unit: complete video clip parsed from the annotated filename
+  fixed_rate_evaluation_frames:
+    rule: within every recommended-test source video, sort by annotated frame index and retain the first frame plus every 30th subsequent frame
+    intended_rate: approximately one frame per second because MOBDrone was annotated at 30 FPS
+    purpose: target proposal recall, target-class false positives per image, and source-level dispersion
+  target_recall_unit: every life_buoy annotation present in the fixed-rate evaluation frames
+  no_model_result_dependent_sampling: true
+  amendment_note: the original all-positive-frame clause was replaced before video download or inference; a fixed-rate sample avoids label-driven temporal overrepresentation and thousands of near-duplicate 30 FPS frames
+
+class_contract:
+  comparable_endpoint_only: true
+  mapping:
+    life_buoy: life_saving_appliances
+  non_target_annotations:
+    - person
+    - boat
+    - surfboard
+    - wood
+  prohibited_claims:
+    - do not report cross-dataset aggregate mAP because the class schemas differ
+    - do not map person to swimmer for a headline class metric
+    - do not treat unannotated SeaDronesSee classes as negatives
+
+frozen_models:
+  repeat4_1280:
+    role: negative_control
+    checkpoint: runs/detect/sds_v2_yolov8n_1280_seed20260803_rare4_noamp/weights/best.pt
+    sha256: 3c96178bab23b6ea17964ff4913364be9edbe0f68b9e4710e677c494a10bc822
+  crop4_1280:
+    role: representation_supported_model
+    checkpoint: runs/detect/sds_v2_yolov8n_1280_seed20260803_crop4_noamp/weights/best.pt
+    sha256: fb7224877a4e1b996b38dbe9582e90aa774fe7e4c234c13a49441be630f67f11
+
+frozen_inference_arms:
+  arms:
+    - full_frame_1280
+    - blind_tile_384
+    - blind_tile_768
+  note: all arms are reported; the external data do not select a checkpoint, threshold, tile size, or merge rule
+  overlap_fraction: 0.25
+  tile_resize_imgsz: 1280
+  confidence_floor: 0.001
+  within_tile_nms_iou: 0.70
+  cross_tile_class_aware_nms_iou: 0.70
+  max_detections_per_tile: 300
+  max_detections_per_image_for_primary_metrics: 300
+  retain_uncapped_target_after_cross_tile_nms: true
+  half: false
+  augment: false
+
+endpoints:
+  primary:
+    - lifebuoy to life_saving_appliances same-class proposal recall at IoU 0.50
+    - target-class false positives per fixed-rate context image at confidence at least 0.001
+  diagnostics:
+    - target AP50 and AP50-95 within the mapped lifebuoy-only contract
+    - source-video dispersion of target recall and false positives
+    - latency and peak CUDA memory
+
+gates_before_inference:
+  - verify the annotation MD5 against the Zenodo record and record its local SHA-256
+  - for selective video acquisition, verify official URL byte ranges against ZIP64 entry CRC32 and record each decoded video's SHA-256; a complete archive MD5 is required only if the full archive is downloaded
+  - preserve source archives read-only and write derived frames to a separate directory
+  - verify extracted frame dimensions against COCO metadata
+  - verify unique filenames, valid boxes, category identity, and complete image-label pairing
+  - freeze a versioned frame manifest with per-frame SHA-256
+  - verify zero source-name and file-content overlap with all SeaDronesSee roles
+  - require at least one lifebuoy-positive source video and at least one target-negative context frame
+
+claim_boundary:
+  - MOBDrone is external-domain evidence, not the protected SeaDronesSee official validation split
+  - no model training, calibration fitting, threshold search, or checkpoint selection is authorized
+  - external results cannot retroactively select among the reported inference arms
+  - do not proceed to inference if frame reconstruction or integrity checks fail
+
+outputs:
+  source_dir: artifacts/external_holdout/mobdrone/source
+  derived_dir: artifacts/external_holdout/mobdrone/derived
+  manifest: results/external_holdout/mobdrone/frame_manifest.json
+  inventory: results/external_holdout/mobdrone/inventory.json
+  project_contract_annotations: results/external_holdout/mobdrone/instances_fixed_rate_project_contract.json
+  report: docs/MOBDRONE_EXTERNAL_HOLDOUT.md
+
+observed_execution:
+  completed_at_utc: 2026-08-16T10:55:30Z
+  official_validation_used: false
+  training_performed: false
+  calibration_or_threshold_fitting_performed: false
+  configuration_selected: false
+  acquisition:
+    annotations_bytes: 60485062
+    annotations_md5_verified: 11f578ff9ede473005d72ccccd0ae82b
+    annotations_sha256: 34d4861b19420096b1396e5805d5988ac2a08cd4ff76ea485b3d889ea12d4f89
+    selected_video_entries: 26
+    selected_video_compressed_bytes: 1617212801
+    selected_video_uncompressed_bytes: 1617107463
+    all_selected_entry_crc32_verified: true
+    all_selected_entry_uncompressed_bytes_verified: true
+    full_archive_md5_locally_verified: false
+    full_archive_md5_boundary: only preregistered ZIP entries were acquired by byte range; do not claim the complete archive MD5 was verified locally
+  extracted_holdout:
+    images: 1264
+    source_groups: 26
+    target_positive_source_groups: 16
+    target_ground_truth: 350
+    target_positive_images: 349
+    target_negative_images: 915
+    unique_frame_sha256: 1264
+    geometry_mismatches: 0
+    missing_frames: 0
+    normalized_seadronessee_source_overlap: 0
+    annotations_sha256: eed4e817ab6c61dffae788e40b06e62c9d9a7d3ed35917061ffa9d774dae23bb
+  target_only_results:
+    repeat4_fullframe:
+      recall_iou_0_50: 0.12571428571428572
+      ap50: 0.0790853633432333
+      ap50_95: 0.0240931872051873
+      false_positives_per_image: 0.08544303797468354
+      negative_image_target_prediction_rate: 0.02622950819672131
+    crop4_fullframe:
+      recall_iou_0_50: 0.08571428571428572
+      ap50: 0.034585210622710624
+      ap50_95: 0.007218576734764058
+      false_positives_per_image: 0.35443037974683544
+      negative_image_target_prediction_rate: 0.10819672131147541
+    repeat4_384:
+      recall_iou_0_50: 0.0
+      ap50: 0.0
+      ap50_95: 0.0
+      false_positives_per_image: 15.840189873417721
+      negative_image_target_prediction_rate: 0.6295081967213115
+    repeat4_768:
+      recall_iou_0_50: 0.005714285714285714
+      ap50: 0.00125
+      ap50_95: 0.00027941176470588236
+      false_positives_per_image: 1.0941455696202531
+      negative_image_target_prediction_rate: 0.2644808743169399
+    crop4_384:
+      recall_iou_0_50: 0.5371428571428571
+      ap50: 0.3054626265455693
+      ap50_95: 0.08050111870543025
+      false_positives_per_image: 7.9794303797468356
+      negative_image_target_prediction_rate: 0.8109289617486338
+    crop4_768:
+      recall_iou_0_50: 0.37714285714285717
+      ap50: 0.218579149810264
+      ap50_95: 0.06887789620381565
+      false_positives_per_image: 3.4098101265822787
+      negative_image_target_prediction_rate: 0.6010928961748634
+  interpretation:
+    - Crop4 target representation transfers to independent MOBDrone source videos when objects are presented through blind tiles.
+    - The external result does not support a deployable tiling rule because target false-positive load and negative-image trigger rate are high.
+    - Full-frame Repeat4 is stronger than full-frame Crop4 on the mapped endpoint.
+    - No checkpoint, threshold, tile size, merge rule, or inference arm is selected from this external evaluation.

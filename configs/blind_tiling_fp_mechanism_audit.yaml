@@ -1,0 +1,95 @@
+analysis:
+  name: detector-dev-blind-tiling-fp-mechanism-audit
+  registered_on: 2026-08-16
+  status: completed_descriptive_audit_no_rule_selected
+  scope: post-freeze descriptive audit; no training, filtering, threshold sweep, or deployment selection
+  question: identify which observable mechanisms dominate target-class false positives after blind tiling
+
+frozen_inputs:
+  annotations: artifacts/partitions/seed20260803/instances_detector_dev.json
+  annotations_sha256: 70748e58e03e153513a38376b2ba928727cff13c0da302fb46b7c1a4e430e89e
+  image_root: D:/dataset/SeaDronesSee_ODv2/compressed/images/train
+  target_category: life_saving_appliances
+  conditions:
+    repeat4_384:
+      role: negative_control
+      tile_size: 384
+      predictions: artifacts/sensitivities/blind_tiling_inference/predictions/repeat4_384_detector_dev.uncapped_target.json
+      sha256: f79fe833380901b0c4c118bbbcc3134ab132aa9432791fda03249f581dbe9d5e
+    repeat4_768:
+      role: negative_control
+      tile_size: 768
+      predictions: artifacts/sensitivities/blind_tiling_inference/predictions/repeat4_768_detector_dev.uncapped_target.json
+      sha256: 30b5cd447a3ca74ae71e8e511104f84ee573e2e779532bf78e9312fa446ff597
+    crop4_384:
+      role: representation_supported_model
+      tile_size: 384
+      predictions: artifacts/sensitivities/blind_tiling_inference/predictions/crop4_384_detector_dev.uncapped_target.json
+      sha256: 1698c13bce02cf193e2eba17546b7f6678391d21735f0316bd0385c2364ce6fe
+    crop4_768:
+      role: representation_supported_model
+      tile_size: 768
+      predictions: artifacts/sensitivities/blind_tiling_inference/predictions/crop4_768_detector_dev.uncapped_target.json
+      sha256: fb9bd261534ef0df42a5a09ee4b1d9aa4cb0c6ec4086ba4e970e1507ba6d4860
+
+frozen_audit_rules:
+  target_match_iou: 0.50
+  descriptive_near_iou: 0.10
+  residual_neighbor_iou: 0.50
+  overlap_fraction: 0.25
+  taxonomy_precedence:
+    - true_positive
+    - duplicate_on_matched_target
+    - target_localization_error
+    - overlaps_other_class
+    - near_other_class
+    - background
+  score_bins: [0.001, 0.01, 0.05, 0.10, 0.25, 1.01]
+  grid_diagnostic: distance to or crossing of any reconstructed internal tile-grid boundary
+  source_concentration: share of false positives contributed by the top 10 percent of source videos
+
+claim_boundary:
+  - use uncapped target-class exports after the already frozen cross-tile NMS
+  - do not remove, rescore, or rerun any prediction
+  - do not select a tile size, threshold, checkpoint, merge rule, or deployment configuration
+  - detector-dev is reused descriptive evidence and cannot validate a future proposal rule
+  - original tile provenance was not retained; grid alignment is geometric association, not causal attribution
+  - calibration-fit, policy-tune, official validation, and official test are prohibited
+  - this audit does not authorize new training
+
+outputs:
+  versioned_results: results/sensitivities/blind_tiling_fp_audit
+  analysis_script: scripts/analyze_blind_tiling_false_positives.py
+  tests: tests/test_blind_tiling_false_positives.py
+  report: docs/BLIND_TILING_FP_AUDIT.md
+
+results:
+  detector_dev_images: 893
+  target_ground_truth: 64
+  repeat4_384:
+    target_true_positives: 0
+    target_false_positives_per_image: 69.867861
+    background_fraction: 0.999551
+    residual_neighbor_fraction: 0.553901
+  repeat4_768:
+    target_true_positives: 0
+    target_false_positives_per_image: 1.787234
+    background_fraction: 0.949248
+    residual_neighbor_fraction: 0.226817
+  crop4_384:
+    target_true_positives: 13
+    target_false_positives_per_image: 20.014558
+    background_fraction: 0.731383
+    other_class_association_fraction: 0.266659
+    residual_neighbor_fraction: 0.613831
+    false_positive_share_on_target_negative_images: 0.903542
+  crop4_768:
+    target_true_positives: 14
+    target_false_positives_per_image: 4.768197
+    background_fraction: 0.586426
+    other_class_association_fraction: 0.406764
+    residual_neighbor_fraction: 0.501174
+    false_positive_share_on_target_negative_images: 0.838187
+  proposal_or_merge_rule_selected: null
+  deployment_tile_size_selected: null
+  interpretation: background hallucination, non-target confusion, and residual overlapping clusters dominate; score and grid geometry do not support a frozen deployment rule

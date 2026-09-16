@@ -1,0 +1,126 @@
+analysis:
+  name: detector-dev-blind-tiling-inference-sensitivity
+  registered_on: 2026-08-16
+  status: completed_target_path_supported_not_deployment_ready
+  scope: post-freeze inference diagnostic; no training and no deployment selection
+  question: test whether a location-blind tiling path restores full-image target proposals
+
+frozen_inputs:
+  annotations: artifacts/partitions/seed20260803/instances_detector_dev.json
+  annotations_sha256: 70748e58e03e153513a38376b2ba928727cff13c0da302fb46b7c1a4e430e89e
+  image_root: D:/dataset/SeaDronesSee_ODv2/compressed/images/train
+  target_category: life_saving_appliances
+  models:
+    repeat4_1280:
+      role: negative_control
+      checkpoint: runs/detect/sds_v2_yolov8n_1280_seed20260803_rare4_noamp/weights/best.pt
+      sha256: 3c96178bab23b6ea17964ff4913364be9edbe0f68b9e4710e677c494a10bc822
+      full_frame_predictions: artifacts/sensitivities/rare_class_factorial/predictions/repeat4_1280_detector_dev.json
+    crop4_1280:
+      role: representation_supported_model
+      checkpoint: runs/detect/sds_v2_yolov8n_1280_seed20260803_crop4_noamp/weights/best.pt
+      sha256: fb7224877a4e1b996b38dbe9582e90aa774fe7e4c234c13a49441be630f67f11
+      full_frame_predictions: artifacts/sensitivities/object_centric_crop_control/predictions/crop4_1280_detector_dev.json
+
+tiling_protocol:
+  unit: every detector-dev image; no annotation locations used by inference
+  native_tile_sizes: [384, 768]
+  overlap_fraction: 0.25
+  boundary_rule: anchor the final tile to the far image edge so every pixel is covered
+  tile_resize_imgsz: 1280
+  confidence_floor: 0.001
+  within_tile_nms_iou: 0.70
+  cross_tile_class_aware_nms_iou: 0.70
+  max_detections_per_tile: 300
+  max_detections_per_image_for_primary_metrics: 300
+  retain_uncapped_target_after_cross_tile_nms: true
+  half: false
+  augment: false
+  device: 0
+  inference_batch: 16
+  batch_freeze_basis: throughput-only preflight; 1.31 GiB peak allocated on the local RTX 4070 Laptop GPU
+
+endpoints:
+  primary:
+    - same-class life_saving_appliances proposal recall at IoU 0.50
+    - aggregate and per-class AP50 and AP50-95 with the 300-detection cap
+  diagnostic:
+    - uncapped target proposal recall after cross-tile NMS
+    - false positives per image at the export confidence floor
+    - tile count and end-to-end latency distribution
+    - peak CUDA memory
+
+decision_rule:
+  factors_are_not_selected: both tile sizes and both models are reported; detector-dev cannot select a deployment tile size
+  target_path_supported: Crop4 blind tiling has positive same-class target recall at IoU 0.50
+  target_path_not_supported: Crop4 remains at zero target recall for both frozen tile sizes
+
+claim_boundary:
+  - detector-dev is reused only after checkpoint and threshold freeze
+  - no target annotation location is visible to the tiling inference path
+  - calibration-fit, policy-tune, official validation, checkpoint selection, threshold selection, and tile-size selection are prohibited
+  - latency is machine- and implementation-specific diagnostic evidence
+  - this diagnostic does not authorize new training
+
+outputs:
+  predictions: artifacts/sensitivities/blind_tiling_inference/predictions
+  versioned_results: results/sensitivities/blind_tiling_inference
+  export_script: scripts/export_blind_tiled_predictions.py
+  analysis_script: scripts/analyze_blind_tiling_sensitivity.py
+  report: docs/BLIND_TILING_INFERENCE_SENSITIVITY.md
+
+results:
+  detector_dev_images: 893
+  full_frame_same_export_evaluator:
+    repeat4_1280:
+      target_recall_iou_0_50: 0/64
+      map50_95: 0.333467
+      false_positives_per_image_at_export_floor: 40.004
+    crop4_1280:
+      target_recall_iou_0_50: 0/64
+      map50_95: 0.343116
+      false_positives_per_image_at_export_floor: 34.608
+  repeat4_384:
+    target_recall_iou_0_50: 0/64
+    uncapped_target_recall_iou_0_50: 0/64
+    map50_95: 0.015744
+    false_positives_per_image_at_export_floor: 277.518
+    latency_p50_ms_per_image: 1898.979
+    latency_p95_ms_per_image: 2015.728
+    primary_predictions_sha256: 1149b4370e47bfe96bc7f0b491609e090ed8ec3188f02a62bb72e158f57e2e2a
+    uncapped_target_predictions_sha256: f79fe833380901b0c4c118bbbcc3134ab132aa9432791fda03249f581dbe9d5e
+  repeat4_768:
+    target_recall_iou_0_50: 0/64
+    uncapped_target_recall_iou_0_50: 0/64
+    map50_95: 0.223177
+    false_positives_per_image_at_export_floor: 111.208
+    latency_p50_ms_per_image: 634.193
+    latency_p95_ms_per_image: 787.248
+    primary_predictions_sha256: 17a129869289d623eae9af9afaeb37410be63126613ffcd4de641e388f0a78aa
+    uncapped_target_predictions_sha256: 30b5cd447a3ca74ae71e8e511104f84ee573e2e779532bf78e9312fa446ff597
+  crop4_384:
+    target_recall_iou_0_50: 13/64
+    uncapped_target_recall_iou_0_50: 13/64
+    target_ap50: 0.000260
+    target_ap50_95: 0.000107
+    map50_95: 0.070303
+    false_positives_per_image_at_export_floor: 279.676
+    latency_p50_ms_per_image: 1935.706
+    latency_p95_ms_per_image: 2667.037
+    primary_predictions_sha256: 85bcaf840e05807295daf8000940f3afb1574f8184e15ebe5353f5048c5a2c76
+    uncapped_target_predictions_sha256: 1698c13bce02cf193e2eba17546b7f6678391d21735f0316bd0385c2364ce6fe
+  crop4_768:
+    target_recall_iou_0_50: 14/64
+    uncapped_target_recall_iou_0_50: 14/64
+    target_ap50: 0.000839
+    target_ap50_95: 0.000366
+    map50_95: 0.235958
+    false_positives_per_image_at_export_floor: 154.617
+    latency_p50_ms_per_image: 640.300
+    latency_p95_ms_per_image: 740.529
+    primary_predictions_sha256: ff03de6a4d7ebcd15ed39bd699dee907661f07fee5cf03300f5903313263d24f
+    uncapped_target_predictions_sha256: fb9bd261534ef0df42a5a09ee4b1d9aa4cb0c6ec4086ba4e970e1507ba6d4860
+  target_path_supported: true
+  global_top_300_removed_matched_targets: false
+  tile_size_selected: null
+  interpretation: blind tiling exposes Crop4 target representation without oracle locations, but very low target AP and high false-positive cost do not support deployment readiness

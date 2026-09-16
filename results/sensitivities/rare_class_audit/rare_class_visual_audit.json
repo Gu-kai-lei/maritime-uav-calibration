@@ -1,0 +1,380 @@
+{
+  "target_category": "life_saving_appliances",
+  "target_category_id": 4,
+  "official_validation_used": false,
+  "image_root_publicly_exported": false,
+  "context_factor": 8.0,
+  "roles": {
+    "detector_train": {
+      "instances": 422,
+      "images": 323
+    },
+    "detector_dev": {
+      "instances": 64,
+      "images": 64
+    },
+    "calibration_fit": {
+      "instances": 364,
+      "images": 222
+    },
+    "policy_tune": {
+      "instances": 73,
+      "images": 56
+    }
+  },
+  "summary": [
+    {
+      "role": "detector_train",
+      "feature": "bbox_width_px",
+      "instances": 422,
+      "p10": 13.100000000000001,
+      "median": 31.0,
+      "p90": 47.0
+    },
+    {
+      "role": "detector_train",
+      "feature": "bbox_height_px",
+      "instances": 422,
+      "p10": 13.100000000000001,
+      "median": 28.0,
+      "p90": 40.0
+    },
+    {
+      "role": "detector_train",
+      "feature": "relative_area",
+      "instances": 422,
+      "p10": 3.206983024691358e-05,
+      "median": 0.00011479170100707748,
+      "p90": 0.00020774121646727602
+    },
+    {
+      "role": "detector_train",
+      "feature": "target_luminance_mean",
+      "instances": 422,
+      "p10": 0.2255491942167282,
+      "median": 0.38838738203048706,
+      "p90": 0.5464393496513369
+    },
+    {
+      "role": "detector_train",
+      "feature": "target_luminance_std",
+      "instances": 422,
+      "p10": 0.04595110639929772,
+      "median": 0.08916245028376579,
+      "p90": 0.17016174346208573
+    },
+    {
+      "role": "detector_train",
+      "feature": "context_luminance_mean",
+      "instances": 422,
+      "p10": 0.20141513645648956,
+      "median": 0.3954205811023712,
+      "p90": 0.48089745342731477
+    },
+    {
+      "role": "detector_train",
+      "feature": "context_luminance_std",
+      "instances": 422,
+      "p10": 0.019787207059562207,
+      "median": 0.02907802164554596,
+      "p90": 0.11802403628826147
+    },
+    {
+      "role": "detector_train",
+      "feature": "absolute_luminance_contrast",
+      "instances": 422,
+      "p10": 0.008012619614601136,
+      "median": 0.03761319816112518,
+      "p90": 0.1040291100740433
+    },
+    {
+      "role": "detector_train",
+      "feature": "standardized_luminance_contrast",
+      "instances": 422,
+      "p10": 0.20615572145262973,
+      "median": 0.7614251452417906,
+      "p90": 3.175516013176363
+    },
+    {
+      "role": "detector_train",
+      "feature": "target_saturation_mean",
+      "instances": 422,
+      "p10": 0.2605716705322266,
+      "median": 0.5682879686355591,
+      "p90": 0.6981751978397371
+    },
+    {
+      "role": "detector_train",
+      "feature": "target_gradient_mean",
+      "instances": 422,
+      "p10": 0.012940927036106586,
+      "median": 0.018069805577397346,
+      "p90": 0.05589737035334114
+    },
+    {
+      "role": "detector_dev",
+      "feature": "bbox_width_px",
+      "instances": 64,
+      "p10": 23.0,
+      "median": 27.5,
+      "p90": 30.0
+    },
+    {
+      "role": "detector_dev",
+      "feature": "bbox_height_px",
+      "instances": 64,
+      "p10": 27.3,
+      "median": 34.5,
+      "p90": 37.0
+    },
+    {
+      "role": "detector_dev",
+      "feature": "relative_area",
+      "instances": 64,
+      "p10": 7.241030092592594e-05,
+      "median": 0.00011441454475308641,
+      "p90": 0.00013382523148148148
+    },
+    {
+      "role": "detector_dev",
+      "feature": "target_luminance_mean",
+      "instances": 64,
+      "p10": 0.8169556021690368,
+      "median": 0.8735611438751221,
+      "p90": 0.9227338612079621
+    },
+    {
+      "role": "detector_dev",
+      "feature": "target_luminance_std",
+      "instances": 64,
+      "p10": 0.12184607088565827,
+      "median": 0.15954554826021194,
+      "p90": 0.18778156936168672
+    },
+    {
+      "role": "detector_dev",
+      "feature": "context_luminance_mean",
+      "instances": 64,
+      "p10": 0.44777865409851075,
+      "median": 0.5420357286930084,
+      "p90": 0.5688936710357666
+    },
+    {
+      "role": "detector_dev",
+      "feature": "context_luminance_std",
+      "instances": 64,
+      "p10": 0.20261565297842027,
+      "median": 0.23386423289775848,
+      "p90": 0.24860670268535615
+    },
+    {
+      "role": "detector_dev",
+      "feature": "absolute_luminance_contrast",
+      "instances": 64,
+      "p10": 0.2421107649803162,
+      "median": 0.37532612681388855,
+      "p90": 0.4251161366701126
+    },
+    {
+      "role": "detector_dev",
+      "feature": "standardized_luminance_contrast",
+      "instances": 64,
+      "p10": 1.205667061424617,
+      "median": 1.6033111083398404,
+      "p90": 1.883717809066227
+    },
+    {
+      "role": "detector_dev",
+      "feature": "target_saturation_mean",
+      "instances": 64,
+      "p10": 0.19041764438152314,
+      "median": 0.32759974896907806,
+      "p90": 0.39322554767131807
+    },
+    {
+      "role": "detector_dev",
+      "feature": "target_gradient_mean",
+      "instances": 64,
+      "p10": 0.02129702176898718,
+      "median": 0.02998478338122368,
+      "p90": 0.037432854622602464
+    },
+    {
+      "role": "calibration_fit",
+      "feature": "bbox_width_px",
+      "instances": 364,
+      "p10": 19.0,
+      "median": 32.0,
+      "p90": 37.0
+    },
+    {
+      "role": "calibration_fit",
+      "feature": "bbox_height_px",
+      "instances": 364,
+      "p10": 16.0,
+      "median": 22.0,
+      "p90": 34.0
+    },
+    {
+      "role": "calibration_fit",
+      "feature": "relative_area",
+      "instances": 364,
+      "p10": 3.8580246913580246e-05,
+      "median": 8.39723186728395e-05,
+      "p90": 0.0001343315972222222
+    },
+    {
+      "role": "calibration_fit",
+      "feature": "target_luminance_mean",
+      "instances": 364,
+      "p10": 0.31394197046756744,
+      "median": 0.485378161072731,
+      "p90": 0.543410313129425
+    },
+    {
+      "role": "calibration_fit",
+      "feature": "target_luminance_std",
+      "instances": 364,
+      "p10": 0.10947589427232743,
+      "median": 0.15917783975601196,
+      "p90": 0.1792983278632164
+    },
+    {
+      "role": "calibration_fit",
+      "feature": "context_luminance_mean",
+      "instances": 364,
+      "p10": 0.35986070036888124,
+      "median": 0.4542846530675888,
+      "p90": 0.4981680065393448
+    },
+    {
+      "role": "calibration_fit",
+      "feature": "context_luminance_std",
+      "instances": 364,
+      "p10": 0.025971068628132345,
+      "median": 0.06674741581082344,
+      "p90": 0.175572595000267
+    },
+    {
+      "role": "calibration_fit",
+      "feature": "absolute_luminance_contrast",
+      "instances": 364,
+      "p10": 0.00773151218891144,
+      "median": 0.04914684593677521,
+      "p90": 0.09194165170192717
+    },
+    {
+      "role": "calibration_fit",
+      "feature": "standardized_luminance_contrast",
+      "instances": 364,
+      "p10": 0.1174613078410856,
+      "median": 0.6191985660008261,
+      "p90": 2.469698189542935
+    },
+    {
+      "role": "calibration_fit",
+      "feature": "target_saturation_mean",
+      "instances": 364,
+      "p10": 0.26460190415382384,
+      "median": 0.5547787547111511,
+      "p90": 0.6412086367607116
+    },
+    {
+      "role": "calibration_fit",
+      "feature": "target_gradient_mean",
+      "instances": 364,
+      "p10": 0.03955671191215515,
+      "median": 0.05298498272895813,
+      "p90": 0.06551037281751633
+    },
+    {
+      "role": "policy_tune",
+      "feature": "bbox_width_px",
+      "instances": 73,
+      "p10": 29.0,
+      "median": 35.0,
+      "p90": 48.599999999999994
+    },
+    {
+      "role": "policy_tune",
+      "feature": "bbox_height_px",
+      "instances": 73,
+      "p10": 19.0,
+      "median": 27.0,
+      "p90": 43.0
+    },
+    {
+      "role": "policy_tune",
+      "feature": "relative_area",
+      "instances": 73,
+      "p10": 7.12770061728395e-05,
+      "median": 0.00012490354938271604,
+      "p90": 0.00017638406635802468
+    },
+    {
+      "role": "policy_tune",
+      "feature": "target_luminance_mean",
+      "instances": 73,
+      "p10": 0.28883735537528993,
+      "median": 0.35458147525787354,
+      "p90": 0.5206205487251282
+    },
+    {
+      "role": "policy_tune",
+      "feature": "target_luminance_std",
+      "instances": 73,
+      "p10": 0.13392147719860076,
+      "median": 0.16715890169143677,
+      "p90": 0.2032735854387283
+    },
+    {
+      "role": "policy_tune",
+      "feature": "context_luminance_mean",
+      "instances": 73,
+      "p10": 0.4177201151847839,
+      "median": 0.4559532701969147,
+      "p90": 0.4812625825405121
+    },
+    {
+      "role": "policy_tune",
+      "feature": "context_luminance_std",
+      "instances": 73,
+      "p10": 0.04209703207015991,
+      "median": 0.05985245481133461,
+      "p90": 0.1654670387506485
+    },
+    {
+      "role": "policy_tune",
+      "feature": "absolute_luminance_contrast",
+      "instances": 73,
+      "p10": 0.02276213765144348,
+      "median": 0.1036655604839325,
+      "p90": 0.15973095893859862
+    },
+    {
+      "role": "policy_tune",
+      "feature": "standardized_luminance_contrast",
+      "instances": 73,
+      "p10": 0.3879748857531051,
+      "median": 1.0946469668129517,
+      "p90": 2.7397633203310585
+    },
+    {
+      "role": "policy_tune",
+      "feature": "target_saturation_mean",
+      "instances": 73,
+      "p10": 0.3078133583068848,
+      "median": 0.46881362795829773,
+      "p90": 0.622271454334259
+    },
+    {
+      "role": "policy_tune",
+      "feature": "target_gradient_mean",
+      "instances": 73,
+      "p10": 0.033564251661300656,
+      "median": 0.0482737235724926,
+      "p90": 0.06088433116674423
+    }
+  ],
+  "claim_boundary": "These are descriptive pixel statistics inside annotated boxes and local context. They do not establish causal domain shift or annotation correctness."
+}

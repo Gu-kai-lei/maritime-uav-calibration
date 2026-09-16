@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "maritime-uav-calibration"
+version = "0.2.0"
+description = "Reproducible calibration, rare-target diagnostics and external transfer for maritime UAV detection"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "GU Kailei"}]
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "scikit-learn>=1.5",
+  "matplotlib>=3.8",
+  "PyYAML>=6.0",
+  "Pillow>=10.3",
+  "joblib>=1.4",
+]
+
+[project.urls]
+Repository = "https://github.com/Gu-kai-lei/maritime-uav-calibration"
+Documentation = "https://github.com/Gu-kai-lei/maritime-uav-calibration/blob/main/docs/REPRODUCIBILITY.md"
+Issues = "https://github.com/Gu-kai-lei/maritime-uav-calibration/issues"
+
+[project.optional-dependencies]
+train = ["ultralytics>=8.3,<9"]
+dev = ["pytest>=8.2", "ruff>=0.5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

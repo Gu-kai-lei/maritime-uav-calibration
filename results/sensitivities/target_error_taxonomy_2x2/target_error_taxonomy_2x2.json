@@ -1,0 +1,284 @@
+{
+  "analysis": "frozen detector-dev four-cell target error taxonomy",
+  "official_validation_used": false,
+  "annotations": "artifacts\\partitions\\seed20260803\\instances_detector_dev.json",
+  "annotations_sha256": "70748e58e03e153513a38376b2ba928727cff13c0da302fb46b7c1a4e430e89e",
+  "target_category": "life_saving_appliances",
+  "target_ground_truth": 64,
+  "confidence_floor": 0.001,
+  "iou_thresholds": [
+    0.1,
+    0.3,
+    0.5
+  ],
+  "cells": {
+    "natural_640": {
+      "prediction_file": "artifacts\\sensitivities\\resolution_inference\\predictions\\detector_dev_640.json",
+      "prediction_sha256": "1f9830d1b882819c9de81d9ada6bbecdb6e54156d5df9075350e277ee5befded",
+      "all_predictions": 29156,
+      "target_class_predictions": 12,
+      "target_prediction_images": 10,
+      "target_prediction_max_score": 0.008802900090813637,
+      "maximum_best_iou_any_class": 0.07947287600463637,
+      "mean_best_iou_any_class": 0.03313704846620276,
+      "median_best_iou_any_class": 0.03581135752439343,
+      "maximum_best_iou_same_class": 0.0,
+      "mean_best_iou_same_class": 0.0,
+      "best_overlap_category_counts": {
+        "boat": 60,
+        "swimmer": 4
+      },
+      "thresholds": {
+        "0.10": {
+          "same_class_localized": 0,
+          "wrong_class_localized": 0,
+          "any_class_localized": 0,
+          "no_localized_prediction": 64
+        },
+        "0.30": {
+          "same_class_localized": 0,
+          "wrong_class_localized": 0,
+          "any_class_localized": 0,
+          "no_localized_prediction": 64
+        },
+        "0.50": {
+          "same_class_localized": 0,
+          "wrong_class_localized": 0,
+          "any_class_localized": 0,
+          "no_localized_prediction": 64
+        }
+      }
+    },
+    "repeat4_640": {
+      "prediction_file": "artifacts\\sensitivities\\rare_class_factorial\\predictions\\detector_dev.json",
+      "prediction_sha256": "2883a99833d6e224ad319695cc03c32d85e0b23256b296cf97d815fb620ae499",
+      "all_predictions": 27462,
+      "target_class_predictions": 20,
+      "target_prediction_images": 16,
+      "target_prediction_max_score": 0.404397189617157,
+      "maximum_best_iou_any_class": 0.06174436178442088,
+      "mean_best_iou_any_class": 0.032851172076847915,
+      "median_best_iou_any_class": 0.03531929617982571,
+      "maximum_best_iou_same_class": 0.0,
+      "mean_best_iou_same_class": 0.0,
+      "best_overlap_category_counts": {
+        "boat": 57,
+        "swimmer": 7
+      },
+      "thresholds": {
+        "0.10": {
+          "same_class_localized": 0,
+          "wrong_class_localized": 0,
+          "any_class_localized": 0,
+          "no_localized_prediction": 64
+        },
+        "0.30": {
+          "same_class_localized": 0,
+          "wrong_class_localized": 0,
+          "any_class_localized": 0,
+          "no_localized_prediction": 64
+        },
+        "0.50": {
+          "same_class_localized": 0,
+          "wrong_class_localized": 0,
+          "any_class_localized": 0,
+          "no_localized_prediction": 64
+        }
+      }
+    },
+    "natural_1280": {
+      "prediction_file": "artifacts\\sensitivities\\rare_class_factorial\\predictions\\natural_1280_detector_dev.json",
+      "prediction_sha256": "64ec91bf91e9547be10d4035d1b95233e4cd2082c30613307737cb37188b4547",
+      "all_predictions": 41147,
+      "target_class_predictions": 7,
+      "target_prediction_images": 7,
+      "target_prediction_max_score": 0.22247172892093658,
+      "maximum_best_iou_any_class": 0.4477664568479213,
+      "mean_best_iou_any_class": 0.05321517182254744,
+      "median_best_iou_any_class": 0.037159014348225605,
+      "maximum_best_iou_same_class": 0.0,
+      "mean_best_iou_same_class": 0.0,
+      "best_overlap_category_counts": {
+        "boat": 59,
+        "swimmer": 5
+      },
+      "thresholds": {
+        "0.10": {
+          "same_class_localized": 0,
+          "wrong_class_localized": 5,
+          "any_class_localized": 5,
+          "no_localized_prediction": 59
+        },
+        "0.30": {
+          "same_class_localized": 0,
+          "wrong_class_localized": 3,
+          "any_class_localized": 3,
+          "no_localized_prediction": 61
+        },
+        "0.50": {
+          "same_class_localized": 0,
+          "wrong_class_localized": 0,
+          "any_class_localized": 0,
+          "no_localized_prediction": 64
+        }
+      }
+    },
+    "repeat4_1280": {
+      "prediction_file": "artifacts\\sensitivities\\rare_class_factorial\\predictions\\repeat4_1280_detector_dev.json",
+      "prediction_sha256": "140d3778484da0007e7e493e431766e75eeb97e49642403be30186a75be709f6",
+      "all_predictions": 40415,
+      "target_class_predictions": 26,
+      "target_prediction_images": 21,
+      "target_prediction_max_score": 0.435787558555603,
+      "maximum_best_iou_any_class": 0.22638358462317276,
+      "mean_best_iou_any_class": 0.06235633172074823,
+      "median_best_iou_any_class": 0.03792163468966196,
+      "maximum_best_iou_same_class": 0.0,
+      "mean_best_iou_same_class": 0.0,
+      "best_overlap_category_counts": {
+        "boat": 55,
+        "swimmer": 9
+      },
+      "thresholds": {
+        "0.10": {
+          "same_class_localized": 0,
+          "wrong_class_localized": 12,
+          "any_class_localized": 12,
+          "no_localized_prediction": 52
+        },
+        "0.30": {
+          "same_class_localized": 0,
+          "wrong_class_localized": 0,
+          "any_class_localized": 0,
+          "no_localized_prediction": 64
+        },
+        "0.50": {
+          "same_class_localized": 0,
+          "wrong_class_localized": 0,
+          "any_class_localized": 0,
+          "no_localized_prediction": 64
+        }
+      }
+    }
+  },
+  "factorial_effects": [
+    {
+      "iou_threshold": 0.1,
+      "outcome": "any_class_localized",
+      "natural_640": 0.0,
+      "repeat4_640": 0.0,
+      "natural_1280": 0.078125,
+      "repeat4_1280": 0.1875,
+      "exposure_effect_640": 0.0,
+      "exposure_effect_1280": 0.109375,
+      "resolution_effect_natural": 0.078125,
+      "resolution_effect_repeat4": 0.1875,
+      "difference_in_differences": 0.109375
+    },
+    {
+      "iou_threshold": 0.1,
+      "outcome": "same_class_localized",
+      "natural_640": 0.0,
+      "repeat4_640": 0.0,
+      "natural_1280": 0.0,
+      "repeat4_1280": 0.0,
+      "exposure_effect_640": 0.0,
+      "exposure_effect_1280": 0.0,
+      "resolution_effect_natural": 0.0,
+      "resolution_effect_repeat4": 0.0,
+      "difference_in_differences": 0.0
+    },
+    {
+      "iou_threshold": 0.1,
+      "outcome": "wrong_class_localized",
+      "natural_640": 0.0,
+      "repeat4_640": 0.0,
+      "natural_1280": 0.078125,
+      "repeat4_1280": 0.1875,
+      "exposure_effect_640": 0.0,
+      "exposure_effect_1280": 0.109375,
+      "resolution_effect_natural": 0.078125,
+      "resolution_effect_repeat4": 0.1875,
+      "difference_in_differences": 0.109375
+    },
+    {
+      "iou_threshold": 0.3,
+      "outcome": "any_class_localized",
+      "natural_640": 0.0,
+      "repeat4_640": 0.0,
+      "natural_1280": 0.046875,
+      "repeat4_1280": 0.0,
+      "exposure_effect_640": 0.0,
+      "exposure_effect_1280": -0.046875,
+      "resolution_effect_natural": 0.046875,
+      "resolution_effect_repeat4": 0.0,
+      "difference_in_differences": -0.046875
+    },
+    {
+      "iou_threshold": 0.3,
+      "outcome": "same_class_localized",
+      "natural_640": 0.0,
+      "repeat4_640": 0.0,
+      "natural_1280": 0.0,
+      "repeat4_1280": 0.0,
+      "exposure_effect_640": 0.0,
+      "exposure_effect_1280": 0.0,
+      "resolution_effect_natural": 0.0,
+      "resolution_effect_repeat4": 0.0,
+      "difference_in_differences": 0.0
+    },
+    {
+      "iou_threshold": 0.3,
+      "outcome": "wrong_class_localized",
+      "natural_640": 0.0,
+      "repeat4_640": 0.0,
+      "natural_1280": 0.046875,
+      "repeat4_1280": 0.0,
+      "exposure_effect_640": 0.0,
+      "exposure_effect_1280": -0.046875,
+      "resolution_effect_natural": 0.046875,
+      "resolution_effect_repeat4": 0.0,
+      "difference_in_differences": -0.046875
+    },
+    {
+      "iou_threshold": 0.5,
+      "outcome": "any_class_localized",
+      "natural_640": 0.0,
+      "repeat4_640": 0.0,
+      "natural_1280": 0.0,
+      "repeat4_1280": 0.0,
+      "exposure_effect_640": 0.0,
+      "exposure_effect_1280": 0.0,
+      "resolution_effect_natural": 0.0,
+      "resolution_effect_repeat4": 0.0,
+      "difference_in_differences": 0.0
+    },
+    {
+      "iou_threshold": 0.5,
+      "outcome": "same_class_localized",
+      "natural_640": 0.0,
+      "repeat4_640": 0.0,
+      "natural_1280": 0.0,
+      "repeat4_1280": 0.0,
+      "exposure_effect_640": 0.0,
+      "exposure_effect_1280": 0.0,
+      "resolution_effect_natural": 0.0,
+      "resolution_effect_repeat4": 0.0,
+      "difference_in_differences": 0.0
+    },
+    {
+      "iou_threshold": 0.5,
+      "outcome": "wrong_class_localized",
+      "natural_640": 0.0,
+      "repeat4_640": 0.0,
+      "natural_1280": 0.0,
+      "repeat4_1280": 0.0,
+      "exposure_effect_640": 0.0,
+      "exposure_effect_1280": 0.0,
+      "resolution_effect_natural": 0.0,
+      "resolution_effect_repeat4": 0.0,
+      "difference_in_differences": 0.0
+    }
+  ],
+  "claim_boundary": "This is a post-freeze detector-dev error analysis. It does not select a checkpoint, threshold, or training intervention, and it does not use official validation."
+}

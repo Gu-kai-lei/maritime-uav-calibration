@@ -1,0 +1,61 @@
+experiment:
+  name: stable-640-noamp-calibration-sensitivity
+  registered_on: 2026-08-04
+  completed_on: 2026-08-04
+  purpose: repeat the frozen calibration analysis with the numerically stable detector checkpoint
+  claim_status: completed sensitivity analysis, not a replacement for the original frozen result
+
+detector:
+  run: runs/detect/sds_v2_yolov8n_640_seed20260803_noamp_launch_replay
+  checkpoint: runs/detect/sds_v2_yolov8n_640_seed20260803_noamp_launch_replay/weights/best.pt
+  checkpoint_sha256: cccc90e9303a37ddc8131288f59b68547c0e05c696d9472fee4f650d16ae5321
+  selected_on: detector-dev
+  official_validation_used_for_selection: false
+  image_size: 640
+  confidence_floor: 0.001
+  nms_iou: 0.70
+  inference_batch: 8
+  device: 0
+
+frozen_roles:
+  calibration_fit:
+    annotations: artifacts/metadata_complete/instances_calibration_fit.json
+    sha256: dca4e55dd55da8910263d7f10572ccc3ade2252653010879f2bc023c5a1c5e8f
+    images: 893
+  policy_tune:
+    annotations: artifacts/metadata_complete/instances_policy_tune.json
+    sha256: 4c4048f10d99b1e5228fc5a165114128f0578c5ed73f488f95006d1c940309d0
+    images: 893
+  official_validation_complete_case:
+    annotations: artifacts/metadata_complete/instances_official_val.json
+    sha256: 0675b0736b79f1589965deff9e222832ceb4ce5ee3cb31a0fa1995eea625e372
+    images: 1093
+  official_validation_all_images:
+    annotations: D:/dataset/SeaDronesSee_ODv2/compressed/annotations/instances_val.json
+    sha256: 9e965c832263e6b9b9dd299637833e5b93924ecf9a1780b16fbd7c53e4a63f5e
+    images: 1547
+
+calibration:
+  match_iou: 0.50
+  ece_bins: 15
+  grouped_bootstrap_repetitions: 1000
+  grouped_bootstrap_seed: 20260803
+  fixed_fp_per_image: [0.1, 0.25, 0.5, 1.0]
+  variants_complete_case:
+    [raw, global_logistic, class_logistic, altitude, altitude_gimbal, full_metadata]
+  variants_all_images: [raw, global_logistic, class_logistic]
+
+execution_rules:
+  - retain the original checkpoint predictions and results unchanged
+  - write every derived artifact under artifacts/sensitivities/stable_640_noamp
+  - fit calibrators only on calibration-fit
+  - choose operating thresholds only on policy-tune
+  - do not tune detector, calibrator, bins, or thresholds on official validation
+  - report negative and positive changes against the original baseline
+  - complete this sensitivity before starting a 1280 detector run
+
+outputs:
+  artifacts: artifacts/sensitivities/stable_640_noamp
+  public_results: results/sensitivities/stable_640_noamp
+  comparison: results/sensitivities/stable_640_noamp/comparison_to_original.json
+  report: docs/STABLE_640_SENSITIVITY.md

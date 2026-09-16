@@ -1,0 +1,55 @@
+experiment:
+  name: sds_v2_yolov8n_640_seed20260803_noamp
+  purpose: single-factor numerical-stability control
+  registered_after: exact deterministic replay reproduced the epoch-9 collapse
+
+frozen_inputs:
+  data: D:\dataset\SeaDronesSee_ODv2\yolo\seadronessee_detector.yaml
+  checkpoint_selection_split: detector-dev
+  official_validation_used_for_selection: false
+  model: yolov8n.pt
+  model_initialization_sha256: f59b3d833e2ff32e194b5bb8e08d211dc7c5bdf144b90d2c8412c47ccfc83b36
+  data_yaml_sha256: 115e6b564c6e78f1bed23a99aef11117d1135258c7a2cd9a3d5209dc99fc3133
+  image_size: 640
+  epochs: 100
+  batch: 16
+  seed: 20260803
+  patience: 20
+  optimizer: auto
+  lr0_argument: 0.01
+  workers: 4
+  deterministic: true
+
+single_factor_change:
+  amp_primary: true
+  amp_control: false
+  note: batch 16 equals the effective AutoBatch value in both failed AMP runs
+
+preflight:
+  training_fraction: 0.02
+  epochs: 1
+  performance_claims_allowed: false
+  pass_gate: process exits normally with no CUDA OOM and no non-finite loss
+
+execution_diagnostic:
+  first_full_attempt:
+    run: sds_v2_yolov8n_640_seed20260803_noamp
+    outcome: failed during the second training backward pass before results.csv existed
+    error: CUDNN_STATUS_BAD_PARAM_STREAM_MISMATCH
+    stderr_bytes: 1399
+    evidence: results/stability_noamp_attempt1.json
+  exact_launch_reproduction:
+    run: sds_v2_yolov8n_640_seed20260803_noamp_launch_replay
+    purpose: distinguish a transient CUDA/cuDNN launch fault from a reproducible execution failure
+    allowed_changes: run name and log paths only
+    performance_claims_allowed: only if the run completes the registered stability gate
+    stop_rule: if the same launch error recurs, do not retry again under this environment
+
+stability_outcome:
+  collapse_definition: first epoch at or below 10 percent of previous best detector-dev mAP50-95
+  stable_gate:
+    - no collapse under the frozen definition
+    - best and final checkpoints contain no non-finite model tensors
+    - stderr contains no CUDA, disk, or dataloader failure
+  next_if_stable: allow a separately registered 1280-pixel detector sensitivity run
+  next_if_unstable: keep 1280 blocked and register an optimizer or learning-rate control

@@ -1,0 +1,24 @@
+{
+  "evaluation_groups": 31,
+  "evaluation_images": 1093,
+  "source_role_images": {
+    "calibrator_source_unseen": 682,
+    "calibration_source_seen": 225,
+    "policy_source_seen": 186
+  },
+  "calibration_groups_in_evaluation": [
+    "source.video:DJI_0001_d3.mov",
+    "source.video:DJI_0038.MP4",
+    "source.video:DJI_0063.MP4",
+    "source.video:DJI_0065.MP4",
+    "source.video:NorthSea_Fri_DJI_0110.MP4",
+    "source.video:NorthSea_Sat_DJI_0129.MP4"
+  ],
+  "policy_groups_in_evaluation": [
+    "source.video:DJI_0032.MP4",
+    "source.video:DJI_0055.MP4",
+    "source.video:NorthSea_Fri_DJI_0112.MP4",
+    "source.video:NorthSea_Sat_DJI_0131.MP4"
+  ],
+  "note": "Source-role analysis is diagnostic; official validation is a same-video frame split."
+}

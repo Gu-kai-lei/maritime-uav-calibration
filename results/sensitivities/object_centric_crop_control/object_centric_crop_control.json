@@ -1,0 +1,332 @@
+{
+  "comparison": "Repeat4-1280 whole-frame repetition versus Crop4-1280 object-centric presentation",
+  "official_validation_used": false,
+  "checkpoint_selection_split": "detector-dev",
+  "target_category": "life_saving_appliances",
+  "matching_iou": 0.5,
+  "confidence_floor": 0.001,
+  "nms_iou": 0.7,
+  "model_sha256": {
+    "repeat4_1280": "3c96178bab23b6ea17964ff4913364be9edbe0f68b9e4710e677c494a10bc822",
+    "crop4_1280": "fb7224877a4e1b996b38dbe9582e90aa774fe7e4c234c13a49441be630f67f11"
+  },
+  "aggregate": [
+    {
+      "metric": "precision",
+      "repeat4_1280": 0.85654941508221,
+      "crop4_1280": 0.8914445179057552,
+      "delta_crop4_minus_repeat4": 0.03489510282354513
+    },
+    {
+      "metric": "recall",
+      "repeat4_1280": 0.6128331798055052,
+      "crop4_1280": 0.6431750720904892,
+      "delta_crop4_minus_repeat4": 0.030341892284983962
+    },
+    {
+      "metric": "map50",
+      "repeat4_1280": 0.6365024444153841,
+      "crop4_1280": 0.6572049027882547,
+      "delta_crop4_minus_repeat4": 0.020702458372870658
+    },
+    {
+      "metric": "map50_95",
+      "repeat4_1280": 0.3569022845850235,
+      "crop4_1280": 0.36305217693214736,
+      "delta_crop4_minus_repeat4": 0.006149892347123875
+    }
+  ],
+  "per_class": [
+    {
+      "category": "swimmer",
+      "metric": "precision",
+      "repeat4_1280": 0.7891021839970545,
+      "crop4_1280": 0.7936689170383927,
+      "delta_crop4_minus_repeat4": 0.004566733041338256
+    },
+    {
+      "category": "swimmer",
+      "metric": "recall",
+      "repeat4_1280": 0.7235955056179775,
+      "crop4_1280": 0.7223113964686998,
+      "delta_crop4_minus_repeat4": -0.001284109149277679
+    },
+    {
+      "category": "swimmer",
+      "metric": "map50",
+      "repeat4_1280": 0.7063358778208951,
+      "crop4_1280": 0.709768489186205,
+      "delta_crop4_minus_repeat4": 0.0034326113653099233
+    },
+    {
+      "category": "swimmer",
+      "metric": "map50_95",
+      "repeat4_1280": 0.2701822191064072,
+      "crop4_1280": 0.2794262966154876,
+      "delta_crop4_minus_repeat4": 0.009244077509080406
+    },
+    {
+      "category": "boat",
+      "metric": "precision",
+      "repeat4_1280": 0.9414072014669312,
+      "crop4_1280": 0.9041220282070989,
+      "delta_crop4_minus_repeat4": -0.03728517325983238
+    },
+    {
+      "category": "boat",
+      "metric": "recall",
+      "repeat4_1280": 0.8336594911937377,
+      "crop4_1280": 0.8649706457925636,
+      "delta_crop4_minus_repeat4": 0.03131115459882583
+    },
+    {
+      "category": "boat",
+      "metric": "map50",
+      "repeat4_1280": 0.8957203400176127,
+      "crop4_1280": 0.8882700326247475,
+      "delta_crop4_minus_repeat4": -0.00745030739286523
+    },
+    {
+      "category": "boat",
+      "metric": "map50_95",
+      "repeat4_1280": 0.5855049230238665,
+      "crop4_1280": 0.5988367706144602,
+      "delta_crop4_minus_repeat4": 0.013331847590593693
+    },
+    {
+      "category": "jetski",
+      "metric": "precision",
+      "repeat4_1280": 0.7440579436699994,
+      "crop4_1280": 0.9293879537195685,
+      "delta_crop4_minus_repeat4": 0.18533001004956906
+    },
+    {
+      "category": "jetski",
+      "metric": "recall",
+      "repeat4_1280": 0.7125333064758647,
+      "crop4_1280": 0.7312186165205385,
+      "delta_crop4_minus_repeat4": 0.018685310044673886
+    },
+    {
+      "category": "jetski",
+      "metric": "map50",
+      "repeat4_1280": 0.7447266861764271,
+      "crop4_1280": 0.8020650322812839,
+      "delta_crop4_minus_repeat4": 0.057338346104856774
+    },
+    {
+      "category": "jetski",
+      "metric": "map50_95",
+      "repeat4_1280": 0.40126448464976167,
+      "crop4_1280": 0.40454368696542603,
+      "delta_crop4_minus_repeat4": 0.0032792023156643646
+    },
+    {
+      "category": "life_saving_appliances",
+      "metric": "precision",
+      "repeat4_1280": 1.0,
+      "crop4_1280": 1.0,
+      "delta_crop4_minus_repeat4": 0.0
+    },
+    {
+      "category": "life_saving_appliances",
+      "metric": "recall",
+      "repeat4_1280": 0.0,
+      "crop4_1280": 0.0,
+      "delta_crop4_minus_repeat4": 0.0
+    },
+    {
+      "category": "life_saving_appliances",
+      "metric": "map50",
+      "repeat4_1280": 0.0,
+      "crop4_1280": 0.0,
+      "delta_crop4_minus_repeat4": 0.0
+    },
+    {
+      "category": "life_saving_appliances",
+      "metric": "map50_95",
+      "repeat4_1280": 0.0,
+      "crop4_1280": 0.0,
+      "delta_crop4_minus_repeat4": 0.0
+    },
+    {
+      "category": "buoy",
+      "metric": "precision",
+      "repeat4_1280": 0.8081797462770649,
+      "crop4_1280": 0.8300436905637155,
+      "delta_crop4_minus_repeat4": 0.021863944286650616
+    },
+    {
+      "category": "buoy",
+      "metric": "recall",
+      "repeat4_1280": 0.7943775957399463,
+      "crop4_1280": 0.8973747016706444,
+      "delta_crop4_minus_repeat4": 0.10299710593069811
+    },
+    {
+      "category": "buoy",
+      "metric": "map50",
+      "repeat4_1280": 0.8357293180619856,
+      "crop4_1280": 0.8859209598490372,
+      "delta_crop4_minus_repeat4": 0.0501916417870516
+    },
+    {
+      "category": "buoy",
+      "metric": "map50_95",
+      "repeat4_1280": 0.5275597961450819,
+      "crop4_1280": 0.5324541304653626,
+      "delta_crop4_minus_repeat4": 0.0048943343202807466
+    }
+  ],
+  "target_roles": [
+    {
+      "role": "detector-dev",
+      "target_ground_truth": 64,
+      "target_images": 64,
+      "source_groups": 1,
+      "repeat4_1280_matched": 0,
+      "crop4_1280_matched": 0,
+      "repeat4_1280_recall": 0.0,
+      "crop4_1280_recall": 0.0,
+      "delta_crop4_minus_repeat4": 0.0,
+      "repeat4_target_predictions": 26,
+      "crop4_target_predictions": 35,
+      "repeat4_target_max_score": 0.435787558555603,
+      "crop4_target_max_score": 0.04663524031639099,
+      "annotations_sha256": "70748e58e03e153513a38376b2ba928727cff13c0da302fb46b7c1a4e430e89e",
+      "repeat4_predictions_sha256": "140d3778484da0007e7e493e431766e75eeb97e49642403be30186a75be709f6",
+      "crop4_predictions_sha256": "1755916ec55e9d514876d83c4d772b85495e76430a8db8b2f4d4bf9e1e3e5793"
+    },
+    {
+      "role": "calibration-fit",
+      "target_ground_truth": 364,
+      "target_images": 222,
+      "source_groups": 2,
+      "repeat4_1280_matched": 72,
+      "crop4_1280_matched": 36,
+      "repeat4_1280_recall": 0.1978021978021978,
+      "crop4_1280_recall": 0.0989010989010989,
+      "delta_crop4_minus_repeat4": -0.0989010989010989,
+      "repeat4_target_predictions": 176,
+      "crop4_target_predictions": 89,
+      "repeat4_target_max_score": 0.5439943075180054,
+      "crop4_target_max_score": 0.6524159908294678,
+      "annotations_sha256": "dca4e55dd55da8910263d7f10572ccc3ade2252653010879f2bc023c5a1c5e8f",
+      "repeat4_predictions_sha256": "0fd80703f51a126364a17f19e06a5b2de0ae85676bfcff2921582a7ad0c6b968",
+      "crop4_predictions_sha256": "721e6962680fe61b9522dbbbc20e86e8f751f720c6ff2eefe9d3bf98d7685c53"
+    },
+    {
+      "role": "policy-tune",
+      "target_ground_truth": 73,
+      "target_images": 56,
+      "source_groups": 2,
+      "repeat4_1280_matched": 1,
+      "crop4_1280_matched": 3,
+      "repeat4_1280_recall": 0.0136986301369863,
+      "crop4_1280_recall": 0.0410958904109589,
+      "delta_crop4_minus_repeat4": 0.0273972602739726,
+      "repeat4_target_predictions": 92,
+      "crop4_target_predictions": 105,
+      "repeat4_target_max_score": 0.8532278537750244,
+      "crop4_target_max_score": 0.7675056457519531,
+      "annotations_sha256": "4c4048f10d99b1e5228fc5a165114128f0578c5ed73f488f95006d1c940309d0",
+      "repeat4_predictions_sha256": "2c7c011f9a314b6b9d6f4fcf940c7f968cd47dfe96beb62d6d0233838452dfd9",
+      "crop4_predictions_sha256": "ddbac5c2942975e089ac43196faf93965fc291e5609e1e5a14667c6ef72173f0"
+    }
+  ],
+  "target_error_taxonomy": {
+    "annotations": ".\\artifacts\\partitions\\seed20260803\\instances_detector_dev.json",
+    "annotations_sha256": "70748e58e03e153513a38376b2ba928727cff13c0da302fb46b7c1a4e430e89e",
+    "target_ground_truth": 64,
+    "iou_thresholds": [
+      0.1,
+      0.3,
+      0.5
+    ],
+    "cells": {
+      "repeat4_1280": {
+        "prediction_file": ".\\artifacts\\sensitivities\\rare_class_factorial\\predictions\\repeat4_1280_detector_dev.json",
+        "prediction_sha256": "140d3778484da0007e7e493e431766e75eeb97e49642403be30186a75be709f6",
+        "all_predictions": 40415,
+        "target_class_predictions": 26,
+        "target_prediction_images": 21,
+        "target_prediction_max_score": 0.435787558555603,
+        "maximum_best_iou_any_class": 0.22638358462317276,
+        "mean_best_iou_any_class": 0.06235633172074823,
+        "maximum_best_iou_same_class": 0.0,
+        "mean_best_iou_same_class": 0.0,
+        "best_overlap_category_counts": {
+          "boat": 55,
+          "swimmer": 9
+        },
+        "thresholds": {
+          "0.10": {
+            "same_class_localized": 0,
+            "wrong_class_localized": 12,
+            "any_class_localized": 12,
+            "no_localized_prediction": 52
+          },
+          "0.30": {
+            "same_class_localized": 0,
+            "wrong_class_localized": 0,
+            "any_class_localized": 0,
+            "no_localized_prediction": 64
+          },
+          "0.50": {
+            "same_class_localized": 0,
+            "wrong_class_localized": 0,
+            "any_class_localized": 0,
+            "no_localized_prediction": 64
+          }
+        }
+      },
+      "crop4_1280": {
+        "prediction_file": ".\\artifacts\\sensitivities\\object_centric_crop_control\\predictions\\crop4_1280_detector_dev.json",
+        "prediction_sha256": "1755916ec55e9d514876d83c4d772b85495e76430a8db8b2f4d4bf9e1e3e5793",
+        "all_predictions": 35640,
+        "target_class_predictions": 35,
+        "target_prediction_images": 32,
+        "target_prediction_max_score": 0.04663524031639099,
+        "maximum_best_iou_any_class": 0.10692039269978071,
+        "mean_best_iou_any_class": 0.03618211977010029,
+        "maximum_best_iou_same_class": 0.0,
+        "mean_best_iou_same_class": 0.0,
+        "best_overlap_category_counts": {
+          "boat": 54,
+          "swimmer": 10
+        },
+        "thresholds": {
+          "0.10": {
+            "same_class_localized": 0,
+            "wrong_class_localized": 1,
+            "any_class_localized": 1,
+            "no_localized_prediction": 63
+          },
+          "0.30": {
+            "same_class_localized": 0,
+            "wrong_class_localized": 0,
+            "any_class_localized": 0,
+            "no_localized_prediction": 64
+          },
+          "0.50": {
+            "same_class_localized": 0,
+            "wrong_class_localized": 0,
+            "any_class_localized": 0,
+            "no_localized_prediction": 64
+          }
+        }
+      }
+    }
+  },
+  "decision": {
+    "repeat4_target_matches_across_roles": 73,
+    "crop4_target_matches_across_roles": 39,
+    "target_ground_truth_across_roles": 501,
+    "repeat4_target_proposal_recall_across_roles": 0.14570858283433133,
+    "crop4_target_proposal_recall_across_roles": 0.07784431137724551,
+    "target_ap50_95_delta": 0.0,
+    "aggregate_map50_95_delta": 0.006149892347123875,
+    "object_centric_presentation_better_on_preregistered_target_endpoints": false
+  },
+  "claim_boundary": "Calibration-fit and policy-tune are one-time post-freeze diagnostics. They did not select a checkpoint, threshold, crop recipe, or training setting; official validation was not used."
+}

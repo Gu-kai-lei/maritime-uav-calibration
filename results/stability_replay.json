@@ -1,0 +1,153 @@
+{
+  "comparison": "same-seed same-environment deterministic replay",
+  "primary_run": "sds_v2_yolov8n_640_seed20260803",
+  "replay_run": "sds_v2_yolov8n_640_seed20260803_replay",
+  "frozen_inputs": {
+    "initialization_sha256_equal": true,
+    "data_yaml_sha256_equal": true,
+    "seed_equal": true,
+    "image_size_equal": true,
+    "effective_batch_primary": 16,
+    "effective_batch_replay": 16,
+    "official_validation_used_for_selection": false
+  },
+  "trajectory": {
+    "rows": 28,
+    "time_excluded_because_it_is_hardware_runtime": true,
+    "fields_compared": [
+      "epoch",
+      "train/box_loss",
+      "train/cls_loss",
+      "train/dfl_loss",
+      "metrics/precision(B)",
+      "metrics/recall(B)",
+      "metrics/mAP50(B)",
+      "metrics/mAP50-95(B)",
+      "val/box_loss",
+      "val/cls_loss",
+      "val/dfl_loss",
+      "lr/pg0",
+      "lr/pg1",
+      "lr/pg2"
+    ],
+    "all_fields_exact": true,
+    "per_field": {
+      "epoch": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      },
+      "train/box_loss": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      },
+      "train/cls_loss": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      },
+      "train/dfl_loss": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      },
+      "metrics/precision(B)": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      },
+      "metrics/recall(B)": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      },
+      "metrics/mAP50(B)": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      },
+      "metrics/mAP50-95(B)": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      },
+      "val/box_loss": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      },
+      "val/cls_loss": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      },
+      "val/dfl_loss": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      },
+      "lr/pg0": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      },
+      "lr/pg1": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      },
+      "lr/pg2": {
+        "exact": true,
+        "maximum_absolute_difference_on_finite_values": 0.0
+      }
+    }
+  },
+  "collapse": {
+    "definition": "first epoch at or below 10% of the previous best detector-dev mAP50-95",
+    "primary_epoch": 9,
+    "replay_epoch": 9,
+    "primary_best_epoch": 8,
+    "replay_best_epoch": 8,
+    "primary_completed_epochs": 28,
+    "replay_completed_epochs": 28
+  },
+  "checkpoints": {
+    "best": {
+      "primary": {
+        "file_sha256": "7cd6d3a42363dc52f1fbda3abca791a01b7fa2e5c2b878aaab9f0b55cb7e7fc9",
+        "model_state_sha256": "37edbc3da02741db9eb3e08c0ade97bf2a32824efc162eb133512bb6d4e4e5ea",
+        "floating_values": 3022223,
+        "nonfinite_values": 0,
+        "maximum_absolute_weight": 17.859375,
+        "l2_weight_norm": 151.9789066531182
+      },
+      "replay": {
+        "file_sha256": "b58c884f3fe416f416c0f1aa260bd934f60032aa2c84d4aaf51fafe239571375",
+        "model_state_sha256": "37edbc3da02741db9eb3e08c0ade97bf2a32824efc162eb133512bb6d4e4e5ea",
+        "floating_values": 3022223,
+        "nonfinite_values": 0,
+        "maximum_absolute_weight": 17.859375,
+        "l2_weight_norm": 151.9789066531182
+      },
+      "checkpoint_file_sha256_equal": false,
+      "model_state_exact": true,
+      "maximum_absolute_model_state_difference": 0.0,
+      "note": "Serialized checkpoint hashes may differ because run metadata contains timestamps; model_state_sha256 compares the ordered model tensors only."
+    },
+    "last": {
+      "primary": {
+        "file_sha256": "840e77d4df4220e946e40e51550b2c0f3829ded2a2366932fd06759b2513a8f1",
+        "model_state_sha256": "62561130eff888a4c3671691cac5a5defa0023c999d954f35ecb6b2790c89d1a",
+        "floating_values": 3022223,
+        "nonfinite_values": 0,
+        "maximum_absolute_weight": 73.5,
+        "l2_weight_norm": 406.2908489412049
+      },
+      "replay": {
+        "file_sha256": "d2481d21cbce59196be606732613e8a9ac67a8919128b7a6efb65d261db596b9",
+        "model_state_sha256": "62561130eff888a4c3671691cac5a5defa0023c999d954f35ecb6b2790c89d1a",
+        "floating_values": 3022223,
+        "nonfinite_values": 0,
+        "maximum_absolute_weight": 73.5,
+        "l2_weight_norm": 406.2908489412049
+      },
+      "checkpoint_file_sha256_equal": false,
+      "model_state_exact": true,
+      "maximum_absolute_model_state_difference": 0.0,
+      "note": "Serialized checkpoint hashes may differ because run metadata contains timestamps; model_state_sha256 compares the ordered model tensors only."
+    }
+  },
+  "stderr_bytes": {
+    "primary": 0,
+    "replay": 0
+  },
+  "conclusion": "The optimization collapse is exactly reproducible under the frozen environment. Every recorded numeric field except runtime is identical, and both best and final model tensor states are bitwise identical across runs."
+}

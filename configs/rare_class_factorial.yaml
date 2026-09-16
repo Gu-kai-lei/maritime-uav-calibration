@@ -1,0 +1,286 @@
+experiment:
+  name: life-saving-appliance-resolution-by-exposure-control
+  registered_on: 2026-08-04
+  status: completed_2x2
+  scope: post-freeze detector diagnostic
+  purpose: separate input-scale and rare-positive-exposure explanations for the persistent zero-AP class
+
+frozen_inputs:
+  model: yolov8n.pt
+  model_initialization_sha256: f59b3d833e2ff32e194b5bb8e08d211dc7c5bdf144b90d2c8412c47ccfc83b36
+  source_data_yaml: D:/dataset/SeaDronesSee_ODv2/yolo/seadronessee_detector.yaml
+  source_data_yaml_sha256: 115e6b564c6e78f1bed23a99aef11117d1135258c7a2cd9a3d5209dc99fc3133
+  source_train_list_sha256: 736fab800d40d32988399179bf2efa64c9f8297d610f7b37515a8f2f31b21623
+  detector_train_annotations_sha256: 9e10932e726d718d53d7923e7c20169b7bc947437980b9d23b8013bc15338490
+  detector_selection_split: detector-dev
+  official_validation_used: false
+
+factors:
+  input_resolution: [640, 1280]
+  rare_positive_exposure:
+    natural:
+      repeat_total: 1
+      training_exposures: 6251
+      effective_target_instance_exposures: 422
+    repeat4:
+      repeat_total: 4
+      rationale: raises 422 target-instance exposures to 1688, close to 1551 natural jetski instances
+      training_exposures: 7220
+      unique_training_images: 6251
+      added_exposures: 969
+      generated_data_yaml: artifacts/rare_class_factorial/seadronessee_detector_rare_repeat4.yaml
+      generated_data_yaml_sha256: b80739e6c26d3053a883fce497f0005fdfb63a8c2a674e5319baf9f59ba1c3aa
+      generated_train_list_sha256: 00255270b6e06a60e6a643505c37b1018c9162c4030d06d9b658889e228e5614
+      generated_detector_dev_list_sha256: 39140d53446ab9a956b6fb059e2f370625c0c978cdb6a0fd8915b886c83f3dda
+      sampling_manifest: artifacts/rare_class_factorial/sampling_manifest.json
+
+common_training:
+  epochs: 100
+  patience: 20
+  seed: 20260803
+  deterministic: true
+  amp: false
+  optimizer: auto
+  lr0_argument: 0.01
+  nominal_batch_size: 64
+  workers: 4
+  checkpoint_selection: Ultralytics detector-dev fitness, never target-specific or official-validation selection
+
+cells:
+  natural_640:
+    status: completed_reused
+    batch_effective: 16
+    run: runs/detect/sds_v2_yolov8n_640_seed20260803_noamp_launch_replay
+    best_epoch: 56
+    detector_dev_map50_95: 0.27981057243014573
+    target_proposal_recall_iou_0.50: 0.0
+  repeat4_640:
+    status: completed_natural_early_stop
+    requested_batch: 16
+    batch_effective: 16
+    nominal_batch_size: 64
+    amp: false
+    resumed: true
+    resume_from_completed_epochs: 15
+    completed_epochs: 65
+    best_epoch: 45
+    best_checkpoint_sha256: 3a093b43231a736141179c702ca5ad9aaaf0be93e8f1b955c316374311f3bf61
+    last_checkpoint_sha256: fd15e6a2d99b322a73378dee5ba3e753c677cd7c2cdf21ad5c35c5749ae72d9a
+    detector_dev_map50_95: 0.2739212106195932
+    detector_dev_map50_95_relative_change: -0.02104767435841911
+    detector_dev_target_ap50_95: 0.0
+    detector_dev_target_proposal_recall_iou_0.50: 0.0
+    calibration_fit_target_matches: 14/364
+    policy_tune_target_matches: 2/73
+    final_checkpoint_model_nonfinite_values: 0
+    stderr_bytes: 0
+    resume_stderr_bytes: 0
+    run: runs/detect/sds_v2_yolov8n_640_seed20260803_rare4_noamp
+    stdout: runs/detect/rare4_640.stdout.log
+    stderr: runs/detect/rare4_640.stderr.log
+    resume_stdout: runs/detect/rare4_640.resume.stdout.log
+    resume_stderr: runs/detect/rare4_640.resume.stderr.log
+  natural_1280:
+    status: completed_natural_early_stop
+    requested_batch: 4
+    fallback_batches: [2, 1]
+    nominal_batch_size: 64
+    amp: false
+    seed: 20260803
+    preflight_fraction: 0.02
+    preflight_epochs: 1
+    preflight_run: runs/detect/sds_v2_yolov8n_1280_seed20260803_noamp_preflight
+    full_run: runs/detect/sds_v2_yolov8n_1280_seed20260803_noamp
+    full_stdout: runs/detect/natural1280.stdout.log
+    full_stderr: runs/detect/natural1280.stderr.log
+    launch_pid: 15348
+    launch_manifest: artifacts/rare_class_factorial/natural_1280/cmd_launch_manifest.json
+    data_yaml: artifacts/rare_class_factorial/natural_1280/seadronessee_detector_natural.yaml
+    data_yaml_sha256: 86b129cec0589911dc5c660aaad010e59d45c25005fc4e2538adec0441f8a29d
+    completed_epochs: 69
+    best_epoch: 49
+    best_checkpoint_sha256: 22370958709df1db50e7e99a40a341560673c3a3ae2d98cbd53b721e447e1762
+    last_checkpoint_sha256: dcbff92765abeac85e8bbc46769f58c759010a7579bbeac510020f5fbb679134
+    detector_dev_map50_95: 0.3657045879633808
+    detector_dev_map50_95_relative_change: 0.3069720160580364
+    detector_dev_target_ap50_95: 0.0
+    detector_dev_target_proposal_recall_iou_0.50: 0.0
+    calibration_fit_target_matches: 64/364
+    policy_tune_target_matches: 1/73
+    final_checkpoint_model_nonfinite_values: 0
+    stderr_bytes: 0
+    evaluation: artifacts/sensitivities/rare_class_factorial/evaluations/natural_1280_detector_dev_eval/evaluation_manifest.json
+  repeat4_1280:
+    status: completed_natural_early_stop
+    launch_if: at least one main-effect cell improves target localization without more than 10 percent relative aggregate mAP50-95 loss
+    gate_met: true
+    requested_batch: 4
+    nominal_batch_size: 64
+    amp: false
+    seed: 20260803
+    preflight_fraction: 0.02
+    preflight_epochs: 1
+    preflight_run: runs/detect/sds_v2_yolov8n_1280_seed20260803_rare4_noamp_preflight
+    full_run: runs/detect/sds_v2_yolov8n_1280_seed20260803_rare4_noamp
+    full_stdout: runs/detect/rare4_1280.stdout.log
+    full_stderr: runs/detect/rare4_1280.stderr.log
+    launch_pid: 58360
+    launch_manifest: artifacts/rare_class_factorial/repeat4_1280_launch_manifest.json
+    data_yaml: artifacts/rare_class_factorial/seadronessee_detector_rare_repeat4.yaml
+    data_yaml_sha256: b80739e6c26d3053a883fce497f0005fdfb63a8c2a674e5319baf9f59ba1c3aa
+    completed_epochs: 59
+    best_epoch: 39
+    best_checkpoint_sha256: 3c96178bab23b6ea17964ff4913364be9edbe0f68b9e4710e677c494a10bc822
+    last_checkpoint_sha256: c1c858a06757d6ce41a2ae5963a63e75e34e07dd5d93a014b182e5a98bbd96f8
+    detector_dev_map50_95: 0.3569022845850235
+    detector_dev_target_ap50_95: 0.0
+    detector_dev_target_proposal_recall_iou_0.50: 0.0
+    calibration_fit_target_matches: 72/364
+    policy_tune_target_matches: 1/73
+    final_checkpoint_model_nonfinite_values: 0
+    stderr_bytes: 0
+    evaluation: artifacts/sensitivities/rare_class_factorial/evaluations/repeat4_1280_detector_dev_eval/evaluation_manifest.json
+
+evaluation:
+  primary:
+    - detector-dev target AP50-95
+    - detector-dev target proposal recall at confidence 0.001 and IoU 0.50
+  tradeoff:
+    - detector-dev aggregate mAP50-95
+    - detector-dev per-class AP50-95
+  one_time_diagnostics:
+    - calibration-fit target proposal recall
+    - policy-tune target proposal recall
+  forbidden_for_selection:
+    - official validation
+    - calibration-fit
+    - policy-tune
+
+stage_gates:
+  - completed: one-epoch 2-percent repeat4_640 launch preflight; performance claims forbidden
+  - completed: repeat4_640 natural early stopping and frozen best-checkpoint evaluation
+  - completed: natural_1280 independent resolution main-effect cell
+  - completed: repeat4_1280 interaction cell and strict four-cell analysis
+
+completed_result:
+  official_validation_used: false
+  versioned_results: results/sensitivities/rare_class_factorial/rare_class_factorial_2x2.json
+  target_matches_across_diagnostic_roles:
+    natural_640: 2/501
+    repeat4_640: 16/501
+    natural_1280: 65/501
+    repeat4_1280: 73/501
+  detector_dev_map50_95:
+    natural_640: 0.27981057243014573
+    repeat4_640: 0.2739212106195932
+    natural_1280: 0.3657045879633808
+    repeat4_1280: 0.3569022845850235
+  detector_dev_target_ap50_95:
+    natural_640: 0.0
+    repeat4_640: 0.0
+    natural_1280: 0.0
+    repeat4_1280: 0.0
+  repeated_exposure_main_effect_useful: true
+  resolution_main_effect_useful: true
+  repeat4_1280_preregistered_gate_met: true
+  repeat4_1280_launched: true
+  final_2x2_complete: true
+  aggregate_map50_95_effects:
+    exposure_640: -0.005889361810552551
+    exposure_1280: -0.008802303378357301
+    resolution_natural: 0.08589401553323506
+    resolution_repeat4: 0.08298107396543031
+    difference_in_differences: -0.00291294156780475
+  target_proposal_recall_difference_in_differences: -0.011976047904191607
+  interpretation: resolution produces the dominant robust gain; repeated exposure gives smaller post-freeze proposal-localization gains that are sub-additive at 1280, while detector-dev target AP and proposal recall remain zero in every cell
+
+launch_record:
+  first_preflight:
+    status: blocked_before_training
+    reason: Ultralytics attempted to replace the official-data train.cache after the list hash changed
+    source_data_changed: false
+    retained_run: runs/detect/sds_v2_yolov8n_640_seed20260803_rare4_noamp_preflight
+  isolated_dataset_wrapper:
+    image_access: ignored local junction to the read-only official image directory
+    labels: 8930 copied text labels under ignored artifacts
+    cache: generated only under ignored artifacts
+    source_data_changed: false
+  isolated_preflight:
+    status: passed
+    epochs: 1
+    fraction: 0.02
+    batch_effective: 16
+    amp: false
+    stderr_error: false
+    performance_claims_allowed: false
+    retained_run: runs/detect/sds_v2_yolov8n_640_seed20260803_rare4_noamp_isolated_preflight
+  power_interruption:
+    status: resumed
+    completed_epochs_before_shutdown: 15
+    partial_epoch_discarded: 16
+    stderr_bytes_before_shutdown: 0
+    resume_checkpoint: runs/detect/sds_v2_yolov8n_640_seed20260803_rare4_noamp/weights/last.pt
+    resume_checkpoint_sha256: a7d66ea42f61217db2972b26163bb30e0af69e954de1b9a77042e3b21a0cb284
+    resume_checkpoint_model_nonfinite_values: 0
+    resume_checkpoint_optimizer_nonfinite_values: 0
+    resume_checkpoint_completed_epochs: 15
+    audit: artifacts/rare_class_factorial/resume_checkpoint_audit.json
+    command_semantics: Ultralytics resume=True restored checkpoint optimizer, scheduler, epoch, and frozen train args
+    resumed_range: epoch 16 through at most epoch 100 under the original early-stopping rule
+  natural_1280_preflight:
+    status: passed
+    batch_effective: 4
+    nominal_batch_size: 64
+    amp: false
+    fraction: 0.02
+    epochs: 1
+    peak_reported_gpu_memory_gib: 3.90
+    stderr_bytes: 0
+    best_checkpoint_model_nonfinite_values: 0
+    performance_claims_allowed: false
+    run: runs/detect/sds_v2_yolov8n_1280_seed20260803_noamp_preflight
+  natural_1280_full_launch:
+    status: completed_natural_early_stop
+    main_pid_at_launch: 15348
+    stderr_bytes_at_first_batch: 0
+    first_epoch_started: true
+    reported_gpu_memory_gib_at_first_batch: 4.00
+    failed_detached_probe_retained: artifacts/rare_class_factorial/natural_1280/detached_failed_launch_manifest.json
+    failed_detached_probe_reason: Python DLL load failure before torch import; no run directory was created
+    active_launch: artifacts/rare_class_factorial/natural_1280/cmd_launch_manifest.json
+    completed_epochs: 69
+    best_epoch: 49
+    stderr_bytes: 0
+    best_checkpoint_model_nonfinite_values: 0
+    last_checkpoint_model_nonfinite_values: 0
+  repeat4_1280_preflight:
+    status: passed
+    batch_effective: 4
+    nominal_batch_size: 64
+    amp: false
+    fraction: 0.02
+    epochs: 1
+    peak_reported_gpu_memory_gib: 3.87
+    stderr_bytes: 0
+    best_checkpoint_model_nonfinite_values: 0
+    performance_claims_allowed: false
+    run: runs/detect/sds_v2_yolov8n_1280_seed20260803_rare4_noamp_preflight
+  repeat4_1280_full_launch:
+    status: completed_natural_early_stop
+    main_pid_at_launch: 58360
+    stderr_bytes_at_first_batch: 0
+    first_epoch_started: true
+    reported_gpu_memory_gib_at_first_batch: 3.87
+    active_launch: artifacts/rare_class_factorial/repeat4_1280_launch_manifest.json
+    completed_epochs: 59
+    best_epoch: 39
+    stderr_bytes: 0
+    best_checkpoint_model_nonfinite_values: 0
+    last_checkpoint_model_nonfinite_values: 0
+    best_checkpoint_audit: artifacts/rare_class_factorial/repeat4_1280_best_checkpoint_audit.json
+    last_checkpoint_audit: artifacts/rare_class_factorial/repeat4_1280_last_checkpoint_audit.json
+
+claim_boundary:
+  - repeated images also repeat co-occurring classes, so the exposure factor is not a pure class-loss weight
+  - different physical batch sizes at 640 and 1280 must retain nominal batch size 64 and be reported
+  - two diagnostic roles are post-freeze evidence only and cannot select checkpoints or thresholds

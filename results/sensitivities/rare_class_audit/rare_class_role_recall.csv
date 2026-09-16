@@ -1,0 +1,4 @@
+role,target_ground_truth,target_images,source_groups,matched_ground_truth,proposal_recall_at_iou_0.50,matched_source_groups,target_class_predictions,target_prediction_images,target_prediction_max_score
+detector_dev,64,64,1,0,0.0,0,12,10,0.008802900090813637
+calibration_fit,364,222,2,2,0.005494505494505495,1,34,29,0.5960093140602112
+policy_tune,73,56,2,0,0.0,0,13,10,0.8466260433197021

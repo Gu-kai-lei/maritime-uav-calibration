@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+env/
+runs/
+data/
+artifacts/
+*.pt
+*.onnx
+*.engine
+*.joblib
+*.parquet
+.DS_Store
+*.egg-info/
+build/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+# Regenerable row-level predictions and dataset-derived imagery/annotations.
+results/sensitivities/blind_tiling_fp_audit/blind_tiling_target_prediction_audit.csv
+results/sensitivities/blind_tiling_fp_audit/blind_tiling_fp_top_badcases.png
+results/external_holdout/mobdrone/instances_fixed_rate_test.json
+results/external_holdout/mobdrone/instances_fixed_rate_project_contract.json

@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this research code, please cite the repository and the SeaDronesSee papers."
+title: "Maritime UAV Detection: Calibration, Rare Targets and Transfer"
+type: software
+authors:
+  - family-names: "GU"
+    given-names: "Kailei"
+version: 0.2.0
+date-released: 2026-09-16
+license: MIT
+repository-code: "https://github.com/Gu-kai-lei/maritime-uav-calibration"

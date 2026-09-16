@@ -1,0 +1,549 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-16T08:44:25.805790+00:00",
+  "analysis_scope": "post-freeze descriptive target-class false-positive audit",
+  "annotations": ".\\artifacts\\partitions\\seed20260803\\instances_detector_dev.json",
+  "annotations_sha256": "70748e58e03e153513a38376b2ba928727cff13c0da302fb46b7c1a4e430e89e",
+  "image_root": "D:\\dataset\\SeaDronesSee_ODv2\\compressed\\images\\train",
+  "target_category": "life_saving_appliances",
+  "target_category_id": 4,
+  "target_ground_truth": 64,
+  "official_validation_used": false,
+  "calibration_fit_used": false,
+  "policy_tune_used": false,
+  "training_performed": false,
+  "prediction_filtering_or_rescoring_performed": false,
+  "threshold_or_tile_size_selection_performed": false,
+  "tile_provenance_available": false,
+  "grid_diagnostic_note": "Grid-boundary features are reconstructed geometric associations. The original tile identity of each merged prediction was not retained, so they are not causal evidence.",
+  "frozen_rules": {
+    "target_match_iou": 0.5,
+    "descriptive_near_iou": 0.1,
+    "residual_neighbor_iou": 0.5,
+    "overlap_fraction": 0.25,
+    "score_bins": [
+      0.001,
+      0.01,
+      0.05,
+      0.1,
+      0.25,
+      1.01
+    ],
+    "taxonomy_precedence": [
+      "true_positive",
+      "duplicate_on_matched_target",
+      "target_localization_error",
+      "overlaps_other_class",
+      "near_other_class",
+      "background"
+    ]
+  },
+  "conditions": [
+    {
+      "condition": "repeat4_384",
+      "tile_size": 384,
+      "predictions": ".\\artifacts\\sensitivities\\blind_tiling_inference\\predictions\\repeat4_384_detector_dev.uncapped_target.json",
+      "predictions_sha256": "f79fe833380901b0c4c118bbbcc3134ab132aa9432791fda03249f581dbe9d5e",
+      "summary": {
+        "images": 893,
+        "images_with_target_predictions": 583,
+        "target_ground_truth": 64,
+        "target_predictions": 62392,
+        "true_positives_iou_0_50": 0,
+        "target_recall_iou_0_50": 0.0,
+        "target_false_positives": 62392,
+        "target_false_positives_per_image": 69.86786114221725,
+        "false_positives_on_target_negative_images": 62365,
+        "false_positive_share_on_target_negative_images": 0.9995672522118221,
+        "taxonomy_counts": {
+          "true_positive": 0,
+          "duplicate_on_matched_target": 0,
+          "target_localization_error": 0,
+          "overlaps_other_class": 6,
+          "near_other_class": 22,
+          "background": 62364
+        },
+        "false_positive_taxonomy_counts": {
+          "duplicate_on_matched_target": 0,
+          "target_localization_error": 0,
+          "overlaps_other_class": 6,
+          "near_other_class": 22,
+          "background": 62364
+        },
+        "false_positive_taxonomy_fractions": {
+          "duplicate_on_matched_target": 0.0,
+          "target_localization_error": 0.0,
+          "overlaps_other_class": 9.616617515066035e-05,
+          "near_other_class": 0.0003526093088857546,
+          "background": 0.9995512245159636
+        },
+        "false_positive_score": {
+          "p25": 0.002245742885861546,
+          "p50": 0.005910569103434682,
+          "p75": 0.022665840573608875,
+          "p95": 0.1359305717051029
+        },
+        "true_positive_score": {
+          "p25": null,
+          "p50": null,
+          "p75": null,
+          "p95": null
+        },
+        "false_positive_box_area_ratio": {
+          "p25": 6.619792079113216e-06,
+          "p50": 9.589303133256136e-06,
+          "p75": 1.4897901160616635e-05,
+          "p95": 2.696617933444357e-05
+        },
+        "true_positive_box_area_ratio": {
+          "p25": null,
+          "p50": null,
+          "p75": null,
+          "p95": null
+        },
+        "false_positive_score_bins": {
+          "[.001,.01)": 38040,
+          "[.01,.05)": 15392,
+          "[.05,.10)": 4391,
+          "[.10,.25)": 3584,
+          "[.25,1]": 985
+        },
+        "residual_neighbor_iou_at_least_0_50": 34559,
+        "residual_neighbor_fraction": 0.5539011411719451,
+        "crosses_internal_grid_boundary": 8620,
+        "crosses_internal_grid_boundary_fraction": 0.13815873829978204,
+        "nearest_grid_boundary_distance_over_tile": {
+          "p25": 0.02276424566904704,
+          "p50": 0.048611958821614586,
+          "p75": 0.08910767237345378,
+          "p95": 0.17739654382069905
+        },
+        "source_groups_with_false_positives": 7,
+        "top_10_percent_source_groups": 1,
+        "top_10_percent_source_group_false_positive_share": 0.9615335299397358,
+        "other_class_associations_at_iou_0_10": {
+          "swimmer": 21,
+          "buoy": 7
+        },
+        "other_class_associations_by_taxonomy": {
+          "overlaps_other_class": {
+            "swimmer": 4,
+            "buoy": 2
+          },
+          "near_other_class": {
+            "swimmer": 17,
+            "buoy": 5
+          }
+        },
+        "highest_false_positive_rate_source_group": {
+          "source_group": "NorthSea_Fri_DJI_0115.MP4",
+          "false_positives": 59992,
+          "images": 290,
+          "false_positives_per_image": 206.86896551724138
+        }
+      }
+    },
+    {
+      "condition": "repeat4_768",
+      "tile_size": 768,
+      "predictions": ".\\artifacts\\sensitivities\\blind_tiling_inference\\predictions\\repeat4_768_detector_dev.uncapped_target.json",
+      "predictions_sha256": "30b5cd447a3ca74ae71e8e511104f84ee573e2e779532bf78e9312fa446ff597",
+      "summary": {
+        "images": 893,
+        "images_with_target_predictions": 191,
+        "target_ground_truth": 64,
+        "target_predictions": 1596,
+        "true_positives_iou_0_50": 0,
+        "target_recall_iou_0_50": 0.0,
+        "target_false_positives": 1596,
+        "target_false_positives_per_image": 1.7872340425531914,
+        "false_positives_on_target_negative_images": 1595,
+        "false_positive_share_on_target_negative_images": 0.9993734335839599,
+        "taxonomy_counts": {
+          "true_positive": 0,
+          "duplicate_on_matched_target": 0,
+          "target_localization_error": 1,
+          "overlaps_other_class": 35,
+          "near_other_class": 45,
+          "background": 1515
+        },
+        "false_positive_taxonomy_counts": {
+          "duplicate_on_matched_target": 0,
+          "target_localization_error": 1,
+          "overlaps_other_class": 35,
+          "near_other_class": 45,
+          "background": 1515
+        },
+        "false_positive_taxonomy_fractions": {
+          "duplicate_on_matched_target": 0.0,
+          "target_localization_error": 0.0006265664160401002,
+          "overlaps_other_class": 0.021929824561403508,
+          "near_other_class": 0.02819548872180451,
+          "background": 0.9492481203007519
+        },
+        "false_positive_score": {
+          "p25": 0.0018509721849113703,
+          "p50": 0.004403682425618172,
+          "p75": 0.017558880150318146,
+          "p95": 0.15430722758173943
+        },
+        "true_positive_score": {
+          "p25": null,
+          "p50": null,
+          "p75": null,
+          "p95": null
+        },
+        "false_positive_box_area_ratio": {
+          "p25": 7.3655776591126425e-06,
+          "p50": 9.588020628053741e-06,
+          "p75": 1.362040096191103e-05,
+          "p95": 4.283507531827576e-05
+        },
+        "true_positive_box_area_ratio": {
+          "p25": null,
+          "p50": null,
+          "p75": null,
+          "p95": null
+        },
+        "false_positive_score_bins": {
+          "[.001,.01)": 1037,
+          "[.01,.05)": 342,
+          "[.05,.10)": 78,
+          "[.10,.25)": 100,
+          "[.25,1]": 39
+        },
+        "residual_neighbor_iou_at_least_0_50": 362,
+        "residual_neighbor_fraction": 0.22681704260651628,
+        "crosses_internal_grid_boundary": 82,
+        "crosses_internal_grid_boundary_fraction": 0.05137844611528822,
+        "nearest_grid_boundary_distance_over_tile": {
+          "p25": 0.02405466636021932,
+          "p50": 0.056540727615356445,
+          "p75": 0.10738644997278848,
+          "p95": 0.20962262153625488
+        },
+        "source_groups_with_false_positives": 6,
+        "top_10_percent_source_groups": 1,
+        "top_10_percent_source_group_false_positive_share": 0.9855889724310777,
+        "other_class_associations_at_iou_0_10": {
+          "buoy": 66,
+          "swimmer": 12,
+          "jetski": 2
+        },
+        "other_class_associations_by_taxonomy": {
+          "overlaps_other_class": {
+            "buoy": 33,
+            "swimmer": 2
+          },
+          "near_other_class": {
+            "buoy": 33,
+            "swimmer": 10,
+            "jetski": 2
+          }
+        },
+        "highest_false_positive_rate_source_group": {
+          "source_group": "NorthSea_Fri_DJI_0115.MP4",
+          "false_positives": 1573,
+          "images": 290,
+          "false_positives_per_image": 5.424137931034482
+        }
+      }
+    },
+    {
+      "condition": "crop4_384",
+      "tile_size": 384,
+      "predictions": ".\\artifacts\\sensitivities\\blind_tiling_inference\\predictions\\crop4_384_detector_dev.uncapped_target.json",
+      "predictions_sha256": "1698c13bce02cf193e2eba17546b7f6678391d21735f0316bd0385c2364ce6fe",
+      "summary": {
+        "images": 893,
+        "images_with_target_predictions": 893,
+        "target_ground_truth": 64,
+        "target_predictions": 17886,
+        "true_positives_iou_0_50": 13,
+        "target_recall_iou_0_50": 0.203125,
+        "target_false_positives": 17873,
+        "target_false_positives_per_image": 20.014557670772675,
+        "false_positives_on_target_negative_images": 16149,
+        "false_positive_share_on_target_negative_images": 0.9035416550103508,
+        "taxonomy_counts": {
+          "true_positive": 13,
+          "duplicate_on_matched_target": 2,
+          "target_localization_error": 33,
+          "overlaps_other_class": 970,
+          "near_other_class": 3796,
+          "background": 13072
+        },
+        "false_positive_taxonomy_counts": {
+          "duplicate_on_matched_target": 2,
+          "target_localization_error": 33,
+          "overlaps_other_class": 970,
+          "near_other_class": 3796,
+          "background": 13072
+        },
+        "false_positive_taxonomy_fractions": {
+          "duplicate_on_matched_target": 0.00011190063223857215,
+          "target_localization_error": 0.0018463604319364404,
+          "overlaps_other_class": 0.05427180663570749,
+          "near_other_class": 0.21238739998880993,
+          "background": 0.7313825323113076
+        },
+        "false_positive_score": {
+          "p25": 0.0017058051889762282,
+          "p50": 0.003926644567400217,
+          "p75": 0.020890582352876663,
+          "p95": 0.43811978697776743
+        },
+        "true_positive_score": {
+          "p25": 0.004407135304063559,
+          "p50": 0.005433159414678812,
+          "p75": 0.016811368986964226,
+          "p95": 0.10342192053794848
+        },
+        "false_positive_box_area_ratio": {
+          "p25": 2.1367509727923912e-05,
+          "p50": 4.850582545843258e-05,
+          "p75": 0.00011524646122577704,
+          "p95": 0.0003197269744967702
+        },
+        "true_positive_box_area_ratio": {
+          "p25": 0.00011450163789207035,
+          "p50": 0.00011719347354682899,
+          "p75": 0.0001655235743569785,
+          "p95": 0.0001838186163380512
+        },
+        "false_positive_score_bins": {
+          "[.001,.01)": 11875,
+          "[.01,.05)": 2873,
+          "[.05,.10)": 828,
+          "[.10,.25)": 859,
+          "[.25,1]": 1438
+        },
+        "residual_neighbor_iou_at_least_0_50": 10971,
+        "residual_neighbor_fraction": 0.6138309181446875,
+        "crosses_internal_grid_boundary": 9533,
+        "crosses_internal_grid_boundary_fraction": 0.5333743635651541,
+        "nearest_grid_boundary_distance_over_tile": {
+          "p25": 0.010727564493815104,
+          "p50": 0.02156980832417806,
+          "p75": 0.04723771413167318,
+          "p95": 0.12079823811848951
+        },
+        "source_groups_with_false_positives": 7,
+        "top_10_percent_source_groups": 1,
+        "top_10_percent_source_group_false_positive_share": 0.3527107928159794,
+        "other_class_associations_at_iou_0_10": {
+          "swimmer": 3319,
+          "boat": 714,
+          "buoy": 624,
+          "jetski": 109
+        },
+        "other_class_associations_by_taxonomy": {
+          "overlaps_other_class": {
+            "swimmer": 692,
+            "buoy": 238,
+            "boat": 36,
+            "jetski": 4
+          },
+          "near_other_class": {
+            "swimmer": 2627,
+            "boat": 678,
+            "buoy": 386,
+            "jetski": 105
+          }
+        },
+        "highest_false_positive_rate_source_group": {
+          "source_group": "DJI_0062.MP4",
+          "false_positives": 1808,
+          "images": 67,
+          "false_positives_per_image": 26.98507462686567
+        }
+      }
+    },
+    {
+      "condition": "crop4_768",
+      "tile_size": 768,
+      "predictions": ".\\artifacts\\sensitivities\\blind_tiling_inference\\predictions\\crop4_768_detector_dev.uncapped_target.json",
+      "predictions_sha256": "fb9bd261534ef0df42a5a09ee4b1d9aa4cb0c6ec4086ba4e970e1507ba6d4860",
+      "summary": {
+        "images": 893,
+        "images_with_target_predictions": 753,
+        "target_ground_truth": 64,
+        "target_predictions": 4272,
+        "true_positives_iou_0_50": 14,
+        "target_recall_iou_0_50": 0.21875,
+        "target_false_positives": 4258,
+        "target_false_positives_per_image": 4.768197088465845,
+        "false_positives_on_target_negative_images": 3569,
+        "false_positive_share_on_target_negative_images": 0.8381869422263973,
+        "taxonomy_counts": {
+          "true_positive": 14,
+          "duplicate_on_matched_target": 9,
+          "target_localization_error": 20,
+          "overlaps_other_class": 437,
+          "near_other_class": 1295,
+          "background": 2497
+        },
+        "false_positive_taxonomy_counts": {
+          "duplicate_on_matched_target": 9,
+          "target_localization_error": 20,
+          "overlaps_other_class": 437,
+          "near_other_class": 1295,
+          "background": 2497
+        },
+        "false_positive_taxonomy_fractions": {
+          "duplicate_on_matched_target": 0.0021136683889149835,
+          "target_localization_error": 0.004697040864255519,
+          "overlaps_other_class": 0.1026303428839831,
+          "near_other_class": 0.30413339596054484,
+          "background": 0.5864255519023015
+        },
+        "false_positive_score": {
+          "p25": 0.0018008995975833386,
+          "p50": 0.0046091326512396336,
+          "p75": 0.032354543916881084,
+          "p95": 0.4949591785669324
+        },
+        "true_positive_score": {
+          "p25": 0.0026142941205762327,
+          "p50": 0.0027841198025271297,
+          "p75": 0.006255842803511769,
+          "p95": 0.04162114309146997
+        },
+        "false_positive_box_area_ratio": {
+          "p25": 4.588101539142102e-05,
+          "p50": 9.509862095326776e-05,
+          "p75": 0.000196479658229186,
+          "p95": 0.0009521150999573772
+        },
+        "true_positive_box_area_ratio": {
+          "p25": 0.00010610539266008907,
+          "p50": 0.00012037912385831414,
+          "p75": 0.00014647691107206305,
+          "p95": 0.0001557813878276243
+        },
+        "false_positive_score_bins": {
+          "[.001,.01)": 2687,
+          "[.01,.05)": 647,
+          "[.05,.10)": 195,
+          "[.10,.25)": 277,
+          "[.25,1]": 452
+        },
+        "residual_neighbor_iou_at_least_0_50": 2134,
+        "residual_neighbor_fraction": 0.5011742602160639,
+        "crosses_internal_grid_boundary": 1446,
+        "crosses_internal_grid_boundary_fraction": 0.33959605448567404,
+        "nearest_grid_boundary_distance_over_tile": {
+          "p25": 0.011476020018259684,
+          "p50": 0.02712289492289225,
+          "p75": 0.06870798269907634,
+          "p95": 0.16059849063555398
+        },
+        "source_groups_with_false_positives": 7,
+        "top_10_percent_source_groups": 1,
+        "top_10_percent_source_group_false_positive_share": 0.3642555190230155,
+        "other_class_associations_at_iou_0_10": {
+          "swimmer": 1036,
+          "boat": 358,
+          "buoy": 266,
+          "jetski": 72
+        },
+        "other_class_associations_by_taxonomy": {
+          "overlaps_other_class": {
+            "swimmer": 305,
+            "buoy": 103,
+            "jetski": 18,
+            "boat": 11
+          },
+          "near_other_class": {
+            "swimmer": 731,
+            "boat": 347,
+            "buoy": 163,
+            "jetski": 54
+          }
+        },
+        "highest_false_positive_rate_source_group": {
+          "source_group": "DJI_0062.MP4",
+          "false_positives": 689,
+          "images": 67,
+          "false_positives_per_image": 10.283582089552239
+        }
+      }
+    }
+  ],
+  "decision": {
+    "proposal_or_merge_rule_selected": null,
+    "deployment_tile_size_selected": null,
+    "supported_use": "mechanism description and future preregistration only",
+    "required_next_evidence": "Evaluate one separately registered proposal/merge rule on new untouched or external source-sequence data."
+  },
+  "montage_selection": [
+    {
+      "condition": "crop4_384",
+      "image_id": 7015,
+      "score": 0.8702818751335144,
+      "taxonomy": "near_other_class"
+    },
+    {
+      "condition": "crop4_384",
+      "image_id": 16120,
+      "score": 0.8657116293907166,
+      "taxonomy": "near_other_class"
+    },
+    {
+      "condition": "crop4_384",
+      "image_id": 7078,
+      "score": 0.8461897969245911,
+      "taxonomy": "near_other_class"
+    },
+    {
+      "condition": "crop4_384",
+      "image_id": 6899,
+      "score": 0.8432478904724121,
+      "taxonomy": "overlaps_other_class"
+    },
+    {
+      "condition": "crop4_384",
+      "image_id": 6991,
+      "score": 0.842377245426178,
+      "taxonomy": "near_other_class"
+    },
+    {
+      "condition": "crop4_768",
+      "image_id": 12514,
+      "score": 0.8629048466682434,
+      "taxonomy": "near_other_class"
+    },
+    {
+      "condition": "crop4_768",
+      "image_id": 12546,
+      "score": 0.8525763750076294,
+      "taxonomy": "near_other_class"
+    },
+    {
+      "condition": "crop4_768",
+      "image_id": 12508,
+      "score": 0.8375705480575562,
+      "taxonomy": "overlaps_other_class"
+    },
+    {
+      "condition": "crop4_768",
+      "image_id": 12539,
+      "score": 0.8217800855636597,
+      "taxonomy": "near_other_class"
+    },
+    {
+      "condition": "crop4_768",
+      "image_id": 12541,
+      "score": 0.8179062008857727,
+      "taxonomy": "near_other_class"
+    }
+  ],
+  "outputs": {
+    "prediction_audit_csv": ".\\results\\sensitivities\\blind_tiling_fp_audit\\blind_tiling_target_prediction_audit.csv",
+    "condition_summary_csv": ".\\results\\sensitivities\\blind_tiling_fp_audit\\blind_tiling_fp_condition_summary.csv",
+    "other_class_associations_csv": ".\\results\\sensitivities\\blind_tiling_fp_audit\\blind_tiling_fp_other_class_associations.csv",
+    "source_groups_csv": ".\\results\\sensitivities\\blind_tiling_fp_audit\\blind_tiling_fp_source_groups.csv",
+    "figure": ".\\results\\sensitivities\\blind_tiling_fp_audit\\blind_tiling_fp_mechanism_audit.png",
+    "badcase_montage": ".\\results\\sensitivities\\blind_tiling_fp_audit\\blind_tiling_fp_top_badcases.png"
+  }
+}

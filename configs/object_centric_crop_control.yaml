@@ -1,0 +1,161 @@
+experiment:
+  name: life-saving-appliance-object-centric-crop-control
+  registered_on: 2026-08-05
+  status: completed_negative_target_result
+  purpose: test whether object-centric presentation, rather than repeated whole frames, repairs target localization
+
+frozen_data:
+  source_partition: artifacts/partitions/seed20260803/instances_detector_train.json
+  source_partition_sha256: 9e10932e726d718d53d7923e7c20169b7bc947437980b9d23b8013bc15338490
+  source_train_images: 6251
+  target_positive_images: 323
+  target_instances: 422
+  target_category: life_saving_appliances
+  original_exposures: 6251
+  derived_exposures: 969
+  total_exposures: 7220
+  effective_target_instance_exposures: 1688
+  forbidden_source_roles:
+    - detector-dev
+    - calibration-fit
+    - policy-tune
+    - official-validation
+
+crop_recipe:
+  derived_crops_per_target_positive_image: 3
+  target_group_rule: union of all life_saving_appliances boxes in the source image
+  context_factors: [8.0, 12.0, 16.0]
+  minimum_native_crop_side: 384
+  boundary_rule: expand until every intersecting active annotation is fully included
+  label_rule: retain every fully contained active annotation; every target instance must appear in every derived crop
+  jpeg:
+    mode: RGB
+    quality: 95
+    subsampling: 0
+    progressive: false
+  source_images_modified: false
+
+matched_control:
+  comparator: Repeat4-1280
+  same_total_training_exposures: true
+  same_effective_target_instance_exposures: true
+  only_intended_factor: repeated whole-frame exposures versus target-group-centered derived crops
+
+training:
+  model: yolov8n.pt
+  model_initialization_sha256: f59b3d833e2ff32e194b5bb8e08d211dc7c5bdf144b90d2c8412c47ccfc83b36
+  imgsz: 1280
+  epochs: 100
+  patience: 20
+  batch: 4
+  nominal_batch_size: 64
+  amp: false
+  seed: 20260803
+  deterministic: true
+  workers: 4
+  optimizer: auto
+  lr0_argument: 0.01
+  checkpoint_selection: detector-dev aggregate fitness only
+
+preflight:
+  fraction: 0.02
+  epochs: 1
+  performance_claims_allowed: false
+  required_before_full_training:
+    - all data gates pass
+    - all unit tests pass
+    - training completes one epoch
+    - stderr has no real error
+    - best checkpoint model tensors are finite
+
+evaluation:
+  primary:
+    - detector-dev target AP50-95
+    - detector-dev target proposal recall at confidence 0.001 and IoU 0.50
+  tradeoff:
+    - detector-dev aggregate mAP50-95
+    - detector-dev per-class AP50-95
+  forbidden_for_selection:
+    - official-validation
+    - calibration-fit
+    - policy-tune
+
+generated_data:
+  root: artifacts/object_centric_crop_control
+  manifest: artifacts/object_centric_crop_control/manifest.json
+  manifest_sha256: 3b213db1ca8df18d85c7517c22b5f0f1c970fc00f7a780605f4ea6de5c4987d6
+  train_list_sha256: 2e63f6c5b7789cc9f36830933a602f7d7617335625175d762be773d9c86935b3
+  data_yaml_sha256: 34c61ffa4b97f677c59c8e4d78ded2fb0fc5abc3ccd1841fb86bdaf1c7b04c93
+  crop_records_sha256: 5f4e678e64135637c3b58d5e3e81f0e517f124fce57a78a3d96250eb23c3cf8c
+  generated_crop_images: 969
+  generated_target_labels: 1266
+  boundary_expansion_variants: 308
+  all_generation_gates_passed: true
+
+preflight_result:
+  status: passed
+  run: runs/detect/sds_v2_yolov8n_1280_seed20260803_crop4_noamp_preflight
+  completed_epochs: 1
+  batch_effective: 4
+  nominal_batch_size: 64
+  amp: false
+  fraction: 0.02
+  stderr_bytes: 0
+  best_checkpoint_sha256: 5a59a522c1567c3b80db8d4fe3322cb435a73ab0f0d96e9fee02368c51dbb037
+  best_checkpoint_model_nonfinite_values: 0
+  performance_claims_allowed: false
+
+full_run:
+  status: completed_natural_early_stop
+  run: runs/detect/sds_v2_yolov8n_1280_seed20260803_crop4_noamp
+  stdout: runs/detect/crop4_1280.stdout.log
+  stderr: runs/detect/crop4_1280.stderr.log
+  launch_manifest: artifacts/object_centric_crop_control/full_launch_manifest.json
+  launch_pid: 57584
+  official_validation_used: false
+  completed_epochs: 69
+  best_epoch: 49
+  batch_effective: 4
+  nominal_batch_size: 64
+  amp: false
+  stderr_bytes: 0
+  results_csv_nonfinite_values: 0
+  best_checkpoint_sha256: fb7224877a4e1b996b38dbe9582e90aa774fe7e4c234c13a49441be630f67f11
+  best_checkpoint_model_nonfinite_values: 0
+  last_checkpoint_sha256: e72443872b243ad0a42036cb72e7ff4a6131771dac7ccbd4f03fbc7d1c67fe5a
+  last_checkpoint_model_nonfinite_values: 0
+  best_checkpoint_audit: artifacts/object_centric_crop_control/crop4_1280_best_checkpoint_audit.json
+  last_checkpoint_audit: artifacts/object_centric_crop_control/crop4_1280_last_checkpoint_audit.json
+
+frozen_evaluation_result:
+  detector_dev_evaluation: artifacts/sensitivities/object_centric_crop_control/evaluations/crop4_1280_detector_dev_eval/evaluation_manifest.json
+  imgsz: 1280
+  confidence_floor: 0.001
+  nms_iou: 0.70
+  aggregate_map50_95: 0.36305217693214736
+  target_ap50_95: 0.0
+  target_proposal_recall_iou_0_50: 0.0
+  official_validation_used: false
+
+matched_comparison_result:
+  comparator: Repeat4-1280
+  versioned_results: results/sensitivities/object_centric_crop_control/object_centric_crop_control.json
+  figure: results/sensitivities/object_centric_crop_control/object_centric_crop_control.png
+  aggregate_map50_95:
+    repeat4_1280: 0.3569022845850235
+    crop4_1280: 0.36305217693214736
+    delta_crop4_minus_repeat4: 0.006149892347123875
+  target_ap50_95:
+    repeat4_1280: 0.0
+    crop4_1280: 0.0
+  target_matches_across_diagnostic_roles:
+    repeat4_1280: 73/501
+    crop4_1280: 39/501
+  detector_dev_target_error_taxonomy_iou_0_50:
+    repeat4_same_class_localized: 0/64
+    crop4_same_class_localized: 0/64
+    repeat4_any_class_localized: 0/64
+    crop4_any_class_localized: 0/64
+  object_centric_presentation_better_on_preregistered_target_endpoints: false
+  interpretation: object-centric crops improve aggregate common-class metrics slightly but reduce cross-role target proposal recall and do not repair detector-dev target localization
+  claim_boundary: calibration-fit and policy-tune are one-time non-selection diagnostics; official validation was not used

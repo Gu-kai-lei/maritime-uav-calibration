@@ -1,0 +1,35 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install package and test dependencies
+        run: python -m pip install -e ".[dev]"
+      - name: Compile Python sources
+        run: python -m compileall -q src scripts tests
+      - name: Run synthetic tests
+        run: python -m pytest
+      - name: Verify publication boundaries and evidence hashes
+        run: python scripts/verify_publication.py
+      - name: Reproduce compact evidence summary without data or GPU
+        run: python scripts/reproduce_published_results.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: evidence-summary-python-${{ matrix.python-version }}
+          path: artifacts/reproduced_summary/

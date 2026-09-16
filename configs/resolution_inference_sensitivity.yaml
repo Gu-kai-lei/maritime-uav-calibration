@@ -1,0 +1,58 @@
+experiment:
+  name: stable-checkpoint-resolution-inference-sensitivity
+  registered_on: 2026-08-04
+  completed_on: 2026-08-04
+  purpose: gate a costly 1280 training run using paired detector-dev inference
+  status: completed
+
+frozen_inputs:
+  checkpoint: runs/detect/sds_v2_yolov8n_640_seed20260803_noamp_launch_replay/weights/best.pt
+  checkpoint_sha256: cccc90e9303a37ddc8131288f59b68547c0e05c696d9472fee4f650d16ae5321
+  data: D:/dataset/SeaDronesSee_ODv2/yolo/seadronessee_detector.yaml
+  data_yaml_sha256: 115e6b564c6e78f1bed23a99aef11117d1135258c7a2cd9a3d5209dc99fc3133
+  evaluation_split: detector-dev
+  official_validation_used: false
+  confidence_floor: 0.001
+  nms_iou: 0.70
+  max_detections: 300
+  device: 0
+  workers: 4
+  half_precision: false
+  test_time_augmentation: false
+
+paired_runs:
+  reference:
+    image_size: 640
+    batch: 16
+    name: sds_stable_detector_dev_eval_640
+  sensitivity:
+    image_size: 1280
+    batch: 4
+    name: sds_stable_detector_dev_eval_1280
+
+interpretation_rules:
+  - batch size is an execution setting and must not be presented as a model change
+  - use only paired detector-dev metrics; do not select or tune on official validation
+  - report aggregate and every per-class AP, including zero or negative changes
+  - this tests inference resolution for a 640-trained checkpoint, not 1280 training
+  - start full 1280 training only after reviewing benefit, runtime, memory, and rare-class behavior
+
+ground_truth_size_analysis:
+  definition: quartiles of detector-dev ground-truth relative box area
+  matching_iou: 0.50
+  prediction_confidence_floor: 0.001
+  grouped_bootstrap_repetitions: 1000
+  grouped_bootstrap_seed: 20260803
+  note: descriptive paired proposal-recall analysis, not a tuned threshold study
+
+outputs:
+  root: results/sensitivities/resolution_inference
+  full_evaluation_artifacts: artifacts/sensitivities/resolution_inference/evaluations
+  paired_ground_truth_artifact: artifacts/sensitivities/resolution_inference/paired_ground_truth_matches.csv
+  report: docs/RESOLUTION_INFERENCE_SENSITIVITY.md
+
+decision:
+  aggregate_resolution_benefit: strong
+  smallest_quartile_benefit: strong with grouped-bootstrap interval above zero
+  life_saving_appliance_benefit: none
+  full_1280_training: deferred pending rare-class failure audit

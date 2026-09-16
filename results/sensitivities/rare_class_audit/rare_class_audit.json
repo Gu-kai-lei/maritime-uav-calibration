@@ -1,0 +1,196 @@
+{
+  "target_category": "life_saving_appliances",
+  "target_category_id": 4,
+  "official_validation_used": false,
+  "confidence_floor": 0.001,
+  "localization_iou": 0.5,
+  "role_support": [
+    {
+      "role": "detector_train",
+      "instances": 422,
+      "images": 323,
+      "source_groups": 3,
+      "relative_area_p10": 3.206983024691358e-05,
+      "relative_area_median": 0.00011479170100707748,
+      "relative_area_p90": 0.00020774121646727602,
+      "altitude_median": 37.29818104236513,
+      "gimbal_pitch_median": 36.1
+    },
+    {
+      "role": "detector_dev",
+      "instances": 64,
+      "images": 64,
+      "source_groups": 1,
+      "relative_area_p10": 7.241030092592594e-05,
+      "relative_area_median": 0.00011441454475308641,
+      "relative_area_p90": 0.00013382523148148148,
+      "altitude_median": 43.297888448643704,
+      "gimbal_pitch_median": 46.2
+    },
+    {
+      "role": "calibration_fit",
+      "instances": 364,
+      "images": 222,
+      "source_groups": 2,
+      "relative_area_p10": 3.8580246913580246e-05,
+      "relative_area_median": 8.39723186728395e-05,
+      "relative_area_p90": 0.0001343315972222222,
+      "altitude_median": 58.49714721121609,
+      "gimbal_pitch_median": 62.7
+    },
+    {
+      "role": "policy_tune",
+      "instances": 73,
+      "images": 56,
+      "source_groups": 2,
+      "relative_area_p10": 7.12770061728395e-05,
+      "relative_area_median": 0.00012490354938271604,
+      "relative_area_p90": 0.00017638406635802468,
+      "altitude_median": 32.3984199939043,
+      "gimbal_pitch_median": 51.6
+    }
+  ],
+  "detector_train_class_support": [
+    {
+      "category": "swimmer",
+      "instances": 29003,
+      "images": 5022,
+      "relative_area_median": 0.0002021846064814815,
+      "bbox_width_median_px": 33.0,
+      "bbox_height_median_px": 29.0,
+      "effective_width_median_640": 7.333333333333333,
+      "effective_height_median_640": 6.333333333333333,
+      "effective_width_median_1280": 14.666666666666666,
+      "effective_height_median_1280": 12.666666666666666
+    },
+    {
+      "category": "boat",
+      "instances": 7582,
+      "images": 3840,
+      "relative_area_median": 0.0013962572248997183,
+      "bbox_width_median_px": 128.0,
+      "bbox_height_median_px": 98.0,
+      "effective_width_median_640": 22.652981427174975,
+      "effective_height_median_640": 16.5,
+      "effective_width_median_1280": 45.30596285434995,
+      "effective_height_median_1280": 33.0
+    },
+    {
+      "category": "buoy",
+      "instances": 2927,
+      "images": 2577,
+      "relative_area_median": 0.0006365740740740741,
+      "bbox_width_median_px": 46.0,
+      "bbox_height_median_px": 64.0,
+      "effective_width_median_640": 10.333333333333332,
+      "effective_height_median_640": 14.166666666666666,
+      "effective_width_median_1280": 20.666666666666664,
+      "effective_height_median_1280": 28.333333333333332
+    },
+    {
+      "category": "jetski",
+      "instances": 1551,
+      "images": 1550,
+      "relative_area_median": 0.0007019193672839506,
+      "bbox_width_median_px": 80.0,
+      "bbox_height_median_px": 56.0,
+      "effective_width_median_640": 14.333333333333332,
+      "effective_height_median_640": 10.833333333333332,
+      "effective_width_median_1280": 28.666666666666664,
+      "effective_height_median_1280": 21.666666666666664
+    },
+    {
+      "category": "life_saving_appliances",
+      "instances": 422,
+      "images": 323,
+      "relative_area_median": 0.00011479170100707748,
+      "bbox_width_median_px": 31.0,
+      "bbox_height_median_px": 28.0,
+      "effective_width_median_640": 5.5,
+      "effective_height_median_640": 4.833333333333333,
+      "effective_width_median_1280": 11.0,
+      "effective_height_median_1280": 9.666666666666666
+    }
+  ],
+  "failure_summary": [
+    {
+      "resolution": 640,
+      "target_ground_truth": 64,
+      "same_class_localized": 0,
+      "wrong_class_localized": 0,
+      "no_localized_prediction": 64,
+      "target_class_predictions": 12,
+      "target_prediction_images": 10,
+      "target_prediction_max_score": 0.008802900090813637
+    },
+    {
+      "resolution": 1280,
+      "target_ground_truth": 64,
+      "same_class_localized": 0,
+      "wrong_class_localized": 0,
+      "no_localized_prediction": 64,
+      "target_class_predictions": 6,
+      "target_prediction_images": 6,
+      "target_prediction_max_score": 0.015549947507679462
+    }
+  ],
+  "role_proposal_recall": [
+    {
+      "role": "detector_dev",
+      "target_ground_truth": 64,
+      "target_images": 64,
+      "source_groups": 1,
+      "matched_ground_truth": 0,
+      "proposal_recall_at_iou_0.50": 0.0,
+      "matched_source_groups": 0,
+      "target_class_predictions": 12,
+      "target_prediction_images": 10,
+      "target_prediction_max_score": 0.008802900090813637
+    },
+    {
+      "role": "calibration_fit",
+      "target_ground_truth": 364,
+      "target_images": 222,
+      "source_groups": 2,
+      "matched_ground_truth": 2,
+      "proposal_recall_at_iou_0.50": 0.005494505494505495,
+      "matched_source_groups": 1,
+      "target_class_predictions": 34,
+      "target_prediction_images": 29,
+      "target_prediction_max_score": 0.5960093140602112
+    },
+    {
+      "role": "policy_tune",
+      "target_ground_truth": 73,
+      "target_images": 56,
+      "source_groups": 2,
+      "matched_ground_truth": 0,
+      "proposal_recall_at_iou_0.50": 0.0,
+      "matched_source_groups": 0,
+      "target_class_predictions": 13,
+      "target_prediction_images": 10,
+      "target_prediction_max_score": 0.8466260433197021
+    }
+  ],
+  "wrong_class_localization_counts": {
+    "640": {},
+    "1280": {}
+  },
+  "localization_diagnostic": {
+    "640": {
+      "maximum_best_iou_any_class": 0.07947287600463637,
+      "mean_best_iou_any_class": 0.03313704846620276,
+      "ground_truth_with_any_prediction_iou_at_least_0.10": 0,
+      "ground_truth_with_any_prediction_iou_at_least_0.30": 0,
+      "most_common_low_overlap_category": "boat"
+    },
+    "1280": {
+      "maximum_best_iou_any_class": 0.0583343584261858,
+      "mean_best_iou_any_class": 0.033077468940893355,
+      "ground_truth_with_any_prediction_iou_at_least_0.10": 0,
+      "ground_truth_with_any_prediction_iou_at_least_0.30": 0,
+      "most_common_low_overlap_category": "boat"
+    }
+  },
+  "claim_boundary": "The detector-dev target class comes from one source group; this audit diagnoses the frozen split and cannot establish cross-source generalization."
+}

@@ -1,0 +1,18 @@
+{
+  "metadata_complete_official_validation": {
+    "images": 1093,
+    "ground_truth": 6882,
+    "predictions": 45204,
+    "matched_ground_truth": 5048,
+    "false_negatives_at_export_floor": 1834
+  },
+  "all_image_official_validation": {
+    "images": 1547,
+    "ground_truth": 9630,
+    "predictions": 66230,
+    "matched_ground_truth": 7347,
+    "false_negatives_at_export_floor": 2283
+  },
+  "prediction_confidence_floor": 0.001,
+  "matching_iou": 0.5
+}

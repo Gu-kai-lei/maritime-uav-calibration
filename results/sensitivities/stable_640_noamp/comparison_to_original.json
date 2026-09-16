@@ -1,0 +1,112 @@
+{
+  "comparison": "original frozen AMP baseline versus stable 640 no-AMP sensitivity",
+  "official_validation_used_for_checkpoint_selection": false,
+  "detector": {
+    "precision": {
+      "original": 0.77603,
+      "stable_noamp": 0.83559,
+      "stable_minus_original": 0.05956000000000006
+    },
+    "recall": {
+      "original": 0.48379,
+      "stable_noamp": 0.52136,
+      "stable_minus_original": 0.03757000000000005
+    },
+    "map50": {
+      "original": 0.48334,
+      "stable_noamp": 0.54063,
+      "stable_minus_original": 0.05729000000000006
+    },
+    "map50_95": {
+      "original": 0.23812,
+      "stable_noamp": 0.27992,
+      "stable_minus_original": 0.041800000000000004
+    }
+  },
+  "proposal_coverage": {
+    "metadata_complete_official_validation": {
+      "images": 1093,
+      "ground_truth": 6882,
+      "original_matched_ground_truth": 5048,
+      "stable_matched_ground_truth": 5264,
+      "matched_ground_truth_delta": 216,
+      "original_coverage": 0.7335077012496367,
+      "stable_coverage": 0.7648939261842488,
+      "original_predictions": 45204,
+      "stable_predictions": 36236
+    },
+    "all_image_official_validation": {
+      "images": 1547,
+      "ground_truth": 9630,
+      "original_matched_ground_truth": 7347,
+      "stable_matched_ground_truth": 7653,
+      "matched_ground_truth_delta": 306,
+      "original_coverage": 0.7629283489096573,
+      "stable_coverage": 0.7947040498442368,
+      "original_predictions": 66230,
+      "stable_predictions": 50269
+    }
+  },
+  "fixed_fp_05": {
+    "altitude": {
+      "target_fp_per_image": 0.5,
+      "original_evaluation_recall": 0.3993025283347864,
+      "stable_evaluation_recall": 0.4043882592269689,
+      "stable_minus_original": 0.005085730892182505,
+      "stable_evaluation_fp_per_image": 0.2982616651418115
+    },
+    "altitude_gimbal": {
+      "target_fp_per_image": 0.5,
+      "original_evaluation_recall": 0.3076140656785818,
+      "stable_evaluation_recall": 0.3237430979366463,
+      "stable_minus_original": 0.016129032258064502,
+      "stable_evaluation_fp_per_image": 0.2058554437328453
+    },
+    "class_logistic": {
+      "target_fp_per_image": 0.5,
+      "original_evaluation_recall": 0.4026445800639349,
+      "stable_evaluation_recall": 0.4665794827085149,
+      "stable_minus_original": 0.06393490264458002,
+      "stable_evaluation_fp_per_image": 0.4565416285452882
+    },
+    "full_metadata": {
+      "target_fp_per_image": 0.5,
+      "original_evaluation_recall": 0.3047079337401918,
+      "stable_evaluation_recall": 0.3238884045335658,
+      "stable_minus_original": 0.019180470793374038,
+      "stable_evaluation_fp_per_image": 0.2095150960658737
+    },
+    "global_logistic": {
+      "target_fp_per_image": 0.5,
+      "original_evaluation_recall": 0.4072943911653589,
+      "stable_evaluation_recall": 0.5190351641964546,
+      "stable_minus_original": 0.11174077303109564,
+      "stable_evaluation_fp_per_image": 0.5434583714547118
+    },
+    "raw": {
+      "target_fp_per_image": 0.5,
+      "original_evaluation_recall": 0.4072943911653589,
+      "stable_evaluation_recall": 0.5190351641964546,
+      "stable_minus_original": 0.11174077303109564,
+      "stable_evaluation_fp_per_image": 0.5434583714547118
+    }
+  },
+  "global_logistic_bootstrap_status": {
+    "ece": "inconclusive",
+    "brier": "better_than_raw",
+    "nll": "inconclusive"
+  },
+  "metadata_bootstrap_status": {
+    "altitude_gimbal": {
+      "ece": "better_than_raw",
+      "brier": "worse_than_raw",
+      "nll": "worse_than_raw"
+    },
+    "full_metadata": {
+      "ece": "better_than_raw",
+      "brier": "worse_than_raw",
+      "nll": "worse_than_raw"
+    }
+  },
+  "claim_boundary": "This is a planned detector-stability sensitivity. It tests whether calibration conclusions persist under a stable checkpoint; it is not a fresh untouched-validation study."
+}
