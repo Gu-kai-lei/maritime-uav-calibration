@@ -31,7 +31,7 @@ jobs:
         run: python scripts/verify_publication.py
       - name: Reproduce compact evidence summary without data or GPU
         run: python scripts/reproduce_published_results.py
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: evidence-summary-python-${{ matrix.python-version }}
           path: artifacts/reproduced_summary/
