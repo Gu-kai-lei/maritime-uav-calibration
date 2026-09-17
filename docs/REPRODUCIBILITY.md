@@ -7,6 +7,8 @@ see [environment notes](ENVIRONMENT.md). Broad package bounds are not an exact e
 ## Level 1: inspect and regenerate compact evidence (CPU)
 
 ```bash
+# CI installs the CPU-only PyTorch 2.6 wheel first; follow the official
+# PyTorch selector if your platform needs a different build.
 python -m pip install -e ".[dev]"
 python -m pytest
 python scripts/reproduce_published_results.py

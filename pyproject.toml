@@ -27,7 +27,13 @@ Issues = "https://github.com/Gu-kai-lei/maritime-uav-calibration/issues"
 
 [project.optional-dependencies]
 train = ["ultralytics>=8.3,<9"]
-dev = ["pytest>=8.2", "ruff>=0.5"]
+dev = [
+  "pytest>=8.2",
+  "ruff>=0.5",
+  "requests>=2.32",
+  "opencv-python-headless>=4.10",
+  "torch>=2.6",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]
