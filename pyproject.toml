@@ -32,7 +32,9 @@ dev = [
   "ruff>=0.5",
   "requests>=2.32",
   "opencv-python-headless>=4.10",
-  "torch>=2.6",
+  "torch>=2.6,<2.7",
+  "torchvision>=0.21,<0.22",
+  "ultralytics==8.4.51",
 ]
 
 [tool.setuptools.packages.find]
